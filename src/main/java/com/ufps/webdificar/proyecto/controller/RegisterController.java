@@ -1,6 +1,7 @@
 package com.ufps.webdificar.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,14 @@ public class RegisterController {
 	
 	
 	@PostMapping
-	public String procesarIniciarSesion(@RequestParam("correo") String correo, @RequestParam("contrasena") String contrasena) {
+	public String procesarIniciarSesion(@RequestParam("correo") String correo, @RequestParam("contrasena") String contrasena, Model model) {
 
 		Trabajador trabajador = trabajadorRepository.findByCorreo(correo);
 		if( !(trabajador!= null && trabajador.getContrasena().equals(contrasena))) {
 			return ""; // aqui debe redireccionar a una pagina donde diga que el usuario o contraseña son incorrectos 
 		}
+		
+		model.addAttribute("trabajador", trabajador);
 		return ""; //redireccionar a la vista principal
 	}
 	

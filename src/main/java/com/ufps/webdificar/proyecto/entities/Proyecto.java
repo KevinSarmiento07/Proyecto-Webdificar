@@ -27,12 +27,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Proyecto {
 
+	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nombre;
-	private Integer encargado;
+	private String encargado;
 	
 	@Column(name = "fecha_inicio")
 	private Date fechaInicio;
@@ -54,4 +57,13 @@ public class Proyecto {
 	
 	 @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
 	    private Set<Tarea> tareas = new HashSet<>();
+
+	 public Proyecto(String nombre, String encargado, Date fechaInicio, Date fechaFin, String descripcion) {
+			this.nombre = nombre;
+			this.encargado = encargado;
+			this.fechaInicio = fechaInicio;
+			this.fechaFin = fechaFin;
+			this.descripcion = descripcion;
+		}
+
 }
