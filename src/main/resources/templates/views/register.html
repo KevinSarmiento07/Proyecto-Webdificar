@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Registrar Cuenta</title>
@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <div class="login-container">
-      <form action="views/register.html">
+      <form th:action="@{/registro}" method="post">
         <div class="form-group">
           <label for="username">Usuario</label>
           <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario">
