@@ -24,6 +24,16 @@
       height: 100px;
       color: aliceblue;
     }
+    
+    .bg-kevin{
+      background-color: transparent;
+      border: transparent;
+    }
+
+    .bg-dark2{
+      background-color: black;
+      border-radius: 70%;
+    }
   </style>
 </head>
 <body>
@@ -38,15 +48,8 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Acerca de</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
-        </li>
+        
+        
       </ul>
     </div>
     <div class="d-flex">
@@ -81,21 +84,41 @@
                 <img class="d-block mx-auto w-50 rounded" src="images/torre 5.jpg" alt="Imagen 5">
             </div>
         </div>
-        <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <button class="carousel-control-prev bg-kevin" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark2" aria-hidden="true"></span>
         </button>
-        <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <button class="carousel-control-next bg-kevin" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark2" aria-hidden="true"></span>
         </button>
     </div>
-    
+
+    <br>
+    <hr class="bg-dark">
+    <br>
+    <div class="row">
+      <h1>Acerca de Nosotros</h1>
+      <ul class="list-unstyled">
+      <li> 
+        Webdificar es una empresa diseñada para la gestión y recopilación
+        de información requerida para una obra, ser un enlace directo entre
+        constructores, directivos y, accionistas.</li>
+      <li>
+        Todo con el fin de conectar al usuario con la información necesaria.
+      </li>
+    </ul>
+    </div>
   </div>
 
   <footer class="footer bg-dark text-light">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-6">
-                
+              <h6 class="text fw-bold">CONTACTO:</h6>
+              <ul class="list-unstyled">
+                  <li>Kevin Andres Sarmiento Sierra - 1152061</li>
+                  <li>Leonardo Trujillo Vega - 1152071</li>
+                  <li>Kevin Alexis Eslava Mantilla - 1152066</li>
+              </ul>
             </div>
         </div>  
     </div>
