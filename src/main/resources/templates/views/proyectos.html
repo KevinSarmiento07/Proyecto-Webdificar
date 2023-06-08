@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Webdificar</title>
   <style>
     body {
       padding-top: 70px;
-      padding-bottom: 100px;      
+      padding-bottom: 100px;  
+      background-color: #F5DEB3;     
     }
 
     .footer {
@@ -22,6 +24,8 @@
   <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
+
+  
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" th:href="@{/}">Webdificar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +45,8 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Contacto</a>
         </li>
+       
+        
       </ul>
     </div>
     <div class="d-flex">
@@ -87,18 +93,18 @@
     
   </div>
 
-  <footer class="footer bg-dark">
+  <footer class="footer bg-dark text-light">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <h6 class="text fw-bold">CONTACTO:</h6>
-                <h6 class="text fw-normal">
-                Kevin Andres Sarmiento Sierra - 1152061<br>
-                Leonardo Trujillo Vega - 1152071<br>
-                Kevin Alexis Eslava Mantilla - 1152066<br>
-                </h6>
+                <ul class="list-unstyled">
+                    <li>Kevin Andres Sarmiento Sierra - 1152061</li>
+                    <li>Leonardo Trujillo Vega - 1152071</li>
+                    <li>Kevin Alexis Eslava Mantilla - 1152066</li>
+                </ul>
             </div>
-      </div>  
+        </div>  
     </div>
   </footer>
   <script src="js/bootstrap.min.js"></script>
