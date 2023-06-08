@@ -42,14 +42,18 @@ public class RegisterController {
 	
 	
 	@PostMapping("/registro")
-	public String procesarRegistro(@RequestParam("nombre") String nombre, @RequestParam("contrasena") String contrasena,@RequestParam("documento") String documento,  @RequestParam("correo") String correo) {
+	public String procesarRegistro(@RequestParam("nombre") 
+	String nombre, @RequestParam("contrasena") 
+	String contrasena,@RequestParam("documento") 
+	String documento,  @RequestParam("correo") 
+	String correo) {
 		if(trabajadorRepository.findByCorreo(correo) != null) {
 			return ""; // aqui debe reddireccionar a una vista diciendo que el correo ya esta registrado
 		}
 		
 		Trabajador trabajador = new Trabajador(nombre, contrasena, documento, correo);
 		trabajadorRepository.save(trabajador);
-		return "";
+		return ""; // retorna a la vista después de guardar el trabajor.
 	}
 	
 	

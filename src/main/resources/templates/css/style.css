@@ -1,5 +1,5 @@
 body {
-  background: radial-gradient(circle at center, #ff8400, #ffa600);
+  background-color: #F5DEB3;
   height: 100vh;
   margin: 0;
   display: flex;
@@ -28,8 +28,8 @@ body {
 
   .login-container input[type="text"]:focus,
   .login-container input[type="password"]:focus {
-    border-color: #ff8400;
-    box-shadow: 0 0 8px #ff8400;
+    border-color: #F5DEB3;
+    box-shadow: 0 0 8px #FFA07A;
   }
 
   .login-container input::placeholder{
@@ -38,20 +38,20 @@ body {
 
   .login-container button[type="submit"] {
     color: #000000;
-    background-color: #ffa600;
+    background-color: #F5DEB3;
     transition: background-color 0.3s ease-in-out;
   }
 
   .login-container button[type="submit"]:hover {
-    background-color: #ff8400;
+    background-color: #FFA07A;
   }
 
   .login-container a{
-    color: #ae5a00;
+    color: #000000;
   }
 
   .nav {
-    background-color: orange;
+    background-color: #FFA07A;
   }
 
   .footer {
