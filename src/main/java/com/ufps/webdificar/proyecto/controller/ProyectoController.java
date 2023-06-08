@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ufps.webdificar.proyecto.entities.Proyecto;
+import com.ufps.webdificar.proyecto.entities.Tarea;
 import com.ufps.webdificar.proyecto.entities.Trabajador;
 import com.ufps.webdificar.proyecto.repositories.ProyectoRepository;
+import com.ufps.webdificar.proyecto.repositories.TareaRepository;
 
 @Controller
 @RequestMapping("/proyecto")
@@ -23,21 +25,40 @@ public class ProyectoController {
 	@Autowired
 	private ProyectoRepository proyectoRepository;
 	
+	@Autowired
+	private TareaRepository tareaRepository;
 	
 	@GetMapping
-	public String vistaProyecto(Model model, Trabajador trabajador) {
-		Set<Proyecto> proyectos = trabajador.getProyectos();
-		model.addAttribute("proyectos", proyectos);
-		return ""; //Redireccionar a la vista del listado de proyectos
+	public String vistaProyecto(Model model) {
+		List<Tarea> tareas = tareaRepository.findAll();
+		model.addAttribute("tareas", tareas);
+		return "views/proyectos"; //Redireccionar a la vista del listado de proyectos
 	}
 	
-	@PostMapping
+	
+	
+	@GetMapping("/crear")
+	public String visyaFormProyecto() {
+		return "views/proyectoRegistrar";
+	}
+	
+	
+	
+	@PostMapping("/crear")
 	public String crearProyecto(@RequestParam("nombre") String nombre, @RequestParam("encargado") String encargado, @RequestParam("fechaInicio") Date fechaInicio,
 			@RequestParam("fechaFin") Date fechaFin, @RequestParam("descripcion") String descripcion) {
 		Proyecto proyecto = new Proyecto(nombre, encargado, fechaInicio, fechaFin, descripcion);
 		proyectoRepository.save(proyecto);
-		return ""; //redireccionar a alguna vista despues de crear el proyecto
+		return "redirect:/proyecto/listar"; //redireccionar a alguna vista despues de crear el proyecto
 	}
+	
+	
+	@GetMapping("/listar")
+	public String listarProyectos() {
+		return "views/proyectoListar";
+	}
+	
+	
 
 	
 	

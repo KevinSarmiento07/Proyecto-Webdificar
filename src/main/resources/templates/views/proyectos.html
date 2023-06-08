@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,14 +23,14 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="../index.html">Webdificar</a>
+    <a class="navbar-brand" th:href="@{/}">Webdificar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio</a>
+          <a class="nav-link" th:href="@{/}">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Acerca de</a>
@@ -44,8 +44,8 @@
       </ul>
     </div>
     <div class="d-flex">
-        <a type="button" class="btn btn-dark" href="views/login.html">Iniciar Sesión</a>
-        <a type="button" class="btn btn-dark" href="views/register.html">Registrar</a>
+        <a type="button" class="btn btn-dark" th:href="@{/login}">Iniciar Sesión</a>
+        <a type="button" class="btn btn-dark" th:href="@{/login/registro}">Registrar</a>
     </div>
   </nav>
 
@@ -53,18 +53,37 @@
     <!-- Contenido del cuerpo -->
     <div class="row">
         <div class="col-md">
-            <button class="btn btn-outline-secondary">Registrar Nuevo Proyecto</button>
-            <button class="btn btn-outline-secondary">Proyectos en Curso</button>
-            <button class="btn btn-outline-secondary">Proyectos Terminados</button>
+            <a type="button" class="btn btn-outline-secondary" th:href="@{/proyecto/crear}" >Registrar Nuevo Proyecto</a>
+            <a type="button" class="btn btn-outline-secondary" th:href="@{/proyecto/crear}">Proyectos en Curso</a>
+            <a type="button" class="btn btn-outline-secondary" th:href="@{/proyecto/crear}">Proyectos Terminados</a>
         </div>
         
     </div>
     <br>
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Tareas Pendientes</h5>
-        </div>
-      </div>
+    
+    
+    <div class="container">
+        <h1>Tareas</h1>
+        
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tarea : ${tareas}">
+                    <td th:text="${tarea.nombre}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/}">Editar</a> <!-- Por hacer editar y elomianr -->
+                        <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a class="btn btn-success" th:href="@{/}">Registrar una tarea</a> <!-- Por hacer -->
+    </div>
     
   </div>
 
