@@ -22,9 +22,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "proyecto")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Proyecto {
 
 	
@@ -65,5 +65,93 @@ public class Proyecto {
 			this.fechaFin = fechaFin;
 			this.descripcion = descripcion;
 		}
+
+	 
+	 
+	public Proyecto() {
+	}
+
+
+
+	public Proyecto(Integer id, String nombre, String encargado, Date fechaInicio, Date fechaFin, String descripcion,
+			Set<Proyecto> proyectos, Set<Tarea> tareas) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.encargado = encargado;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.descripcion = descripcion;
+		this.proyectos = proyectos;
+		this.tareas = tareas;
+	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEncargado() {
+		return encargado;
+	}
+
+	public void setEncargado(String encargado) {
+		this.encargado = encargado;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Set<Proyecto> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(Set<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+
+	public Set<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(Set<Tarea> tareas) {
+		this.tareas = tareas;
+	}
+	 
+	 
 
 }
