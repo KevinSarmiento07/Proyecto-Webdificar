@@ -47,7 +47,7 @@ public class ProyectoController {
 	@PostMapping("/crear")
 	public String crearProyecto(@RequestParam("nombre") String nombre, @RequestParam("encargado") String encargado, @RequestParam("fechaInicio") Date fechaInicio,
 			@RequestParam("fechaFin") Date fechaFin, @RequestParam("descripcion") String descripcion) {
-		Proyecto proyecto = new Proyecto(nombre, encargado, fechaInicio, fechaFin, descripcion);
+		Proyecto proyecto = new Proyecto(null, nombre, encargado, fechaInicio, fechaFin, descripcion, null, null);
 		proyectoRepository.save(proyecto);
 		return "redirect:/proyecto/listar"; //redireccionar a alguna vista despues de crear el proyecto
 	}

@@ -21,9 +21,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tarea")
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tarea {
 
 	@Id
@@ -59,118 +59,5 @@ public class Tarea {
 
 	@OneToMany(mappedBy = "tarea", cascade = CascadeType.ALL)
 	private List<Documento> documentos = new ArrayList<>();
-
-	
-	
-	public Tarea() {
-	}
-
-	public Tarea(Integer id, String nombre, String descripcion, Integer tipoTarea, Date fecha, Date fechaInicio,
-			Date fechaFin, Proyecto proyecto, Trabajador trabajadorAsignado, Trabajador trabajadorEncargado,
-			List<Documento> documentos) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.tipoTarea = tipoTarea;
-		this.fecha = fecha;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		this.proyecto = proyecto;
-		this.trabajadorAsignado = trabajadorAsignado;
-		this.trabajadorEncargado = trabajadorEncargado;
-		this.documentos = documentos;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Integer getTipoTarea() {
-		return tipoTarea;
-	}
-
-	public void setTipoTarea(Integer tipoTarea) {
-		this.tipoTarea = tipoTarea;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	public Proyecto getProyecto() {
-		return proyecto;
-	}
-
-	public void setProyecto(Proyecto proyecto) {
-		this.proyecto = proyecto;
-	}
-
-	public Trabajador getTrabajadorAsignado() {
-		return trabajadorAsignado;
-	}
-
-	public void setTrabajadorAsignado(Trabajador trabajadorAsignado) {
-		this.trabajadorAsignado = trabajadorAsignado;
-	}
-
-	public Trabajador getTrabajadorEncargado() {
-		return trabajadorEncargado;
-	}
-
-	public void setTrabajadorEncargado(Trabajador trabajadorEncargado) {
-		this.trabajadorEncargado = trabajadorEncargado;
-	}
-
-	public List<Documento> getDocumentos() {
-		return documentos;
-	}
-
-	public void setDocumentos(List<Documento> documentos) {
-		this.documentos = documentos;
-	}
-	
-	
-	
 
 }
