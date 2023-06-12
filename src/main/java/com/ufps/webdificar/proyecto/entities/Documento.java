@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -45,13 +46,15 @@ public class Documento {
 	@JoinColumn(name = "tarea_id")
 	private Tarea tarea;
 
+	@Lob
+    private byte[] archivo;
 	
 	
 	public Documento() {
 	}
 
 	public Documento(Integer id, String nombre, String descripcion, Integer tipoDocumento, String url, Date fecha,
-			Trabajador trabajador, Tarea tarea) {
+			Trabajador trabajador, Tarea tarea, byte [] archivo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -61,6 +64,17 @@ public class Documento {
 		this.fecha = fecha;
 		this.trabajador = trabajador;
 		this.tarea = tarea;
+		this.archivo = archivo;
+	}
+	
+	
+
+	public byte[] getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(byte[] archivo) {
+		this.archivo = archivo;
 	}
 
 	public Integer getId() {

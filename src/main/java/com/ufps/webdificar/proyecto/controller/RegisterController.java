@@ -60,14 +60,6 @@ public class RegisterController {
 	}
 	
 	
-	@GetMapping("/prueba")
-	public void probando() {
-		System.out.println("entro en prueba");
-		if(trabajadorRepository.findByCorreo("kevin@gmail.com") != null) {
-			System.out.println("el correo existe");
-		}
-		System.out.println("guardo el trabajador");
-		
-	}
+	
 
 }
