@@ -34,7 +34,7 @@ public class ProyectoController {
 	@Autowired
 	private TareaRepository tareaRepository;
 	
-	@GetMapping
+	@GetMapping("/listar")
 	public String listarProyectos(Model model) {
 		List<Proyecto> proyectos = proyectoRepository.findAll();
 		model.addAttribute("proyectos", proyectos);
@@ -63,14 +63,15 @@ public class ProyectoController {
 		
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
 		model.addAttribute("proyecto", proyectoEditar);
-		return ""; //redireccionar a editar proyectos
+		return "views/proyectoEdit"; //redireccionar a editar proyectos
 	}
 	
 	
 	@PutMapping("/editar/{id}")
-	public String procesarEditarProyecto(@Valid Proyecto proyecto, @PathVariable Integer id) {
+	public String procesarEditarProyecto(@Valid Proyecto proyecto, Model model, @PathVariable Integer id) {
 		proyecto.setId(id);
 		Proyecto proyectoEditado = proyectoRepository.save(proyecto);
+		model.addAttribute("proyecto", proyectoEditado);
 		return "redirect:/proyecto";
 	}
 	

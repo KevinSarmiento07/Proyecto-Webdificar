@@ -35,7 +35,7 @@ public class RegisterController {
 		}
 		
 		model.addAttribute("trabajador", trabajador);
-		return "redirect:/proyecto"; //redireccionar a la vista principal
+		return "redirect:/proyecto/listar"; //redireccionar a la vista principal
 	}
 	
 	@GetMapping("/registro")

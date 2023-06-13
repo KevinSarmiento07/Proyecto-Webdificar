@@ -38,10 +38,10 @@ public class Proyecto {
 	private String encargado;
 	
 	@Column(name = "fecha_inicio")
-	private Date fechaInicio;
+	private String fechaInicio;
 	
 	@Column(name = "fecha_fin")
-	private Date fechaFin;
+	private String fechaFin;
 	
 	
 	private String descripcion;
