@@ -5,6 +5,8 @@
     <title>Webdificar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
 	<style>
     body {
         position: relative;
@@ -57,7 +59,7 @@
                 <br>
                 <br>
                 <div class="card" style="width: 65rem;">
-                    <form th:action="@{'/proyecto/editar/' + *{id}}" method="post">
+                    <form th:action="@{'/proyecto/editar/' + *{id}}" method="post" id="proyectoEditForm">
                         <div class="card-body">
                             <h1 class="card-title" th:text="*{nombre}"></h1>
                             <input type="text" id="nombre" name="nombre" th:value="*{nombre}" hidden>
@@ -79,7 +81,7 @@
                             </div>
                             <a class="btn" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>
                             <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
-                            <a type="button" id="aceptarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Aplicar Cambios</a>
+                            <button type="submit" id="aceptarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Aplicar Cambios</a>
                         </div>
                     </form>
                 </div>
@@ -126,6 +128,36 @@
             const cancelarEditar = document.getElementById("cancelarEditar");
             cancelarEditar.hidden = false;
         }
+
+        document.getElementById("proyectoEditForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario normal
+
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "PUT",
+                body: formData
+            })
+            .then(function(response) {                                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Exitoso',
+                    text: 'Se modificó el proyecto de manera exitosa',
+                    confirmButtonText: 'OK'
+                }).then(function() {
+                    location.reload(); // Recargar la página
+                });                 
+            })
+            .catch(function(error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al modificar el proyecto.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
     </script>
 </body>
 </html>
