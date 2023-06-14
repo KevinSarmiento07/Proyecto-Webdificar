@@ -57,7 +57,7 @@ public class DocumentoController {
 		return "redirect:/documento";
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
+	@GetMapping("/eliminar/{id}")
 	public String eliminarDocumento(@PathVariable("id") Integer id) {
 		documentoRepository.deleteById(id);
 		return "redirect:/documento";
