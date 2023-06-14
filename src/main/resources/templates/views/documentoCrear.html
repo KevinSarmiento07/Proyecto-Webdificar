@@ -12,7 +12,7 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h1 class="card-title">Registrar Proyecto</h1>
+              <h1 class="card-title">Registrar Documento</h1>
               <form th:action="@{/documento/crear}" th:object="${documento}" method="post">
                   <div class="form-group">
                       <label for="nombre">Nombre:</label>
@@ -28,7 +28,7 @@
                       <input type="text" class="form-control" id="url" name="url" th:value="*{url}" required>
                   </div>
                   <div class="form-group">
-                      <label for="fecha">Descripción:</label>
+                      <label for="fecha">Fecha:</label>
                       <input type="date" class="form-control" id="fecha" name="fecha" th:value="*{fecha}"  required>
                   </div>
                   <button type="submit" class="btn btn-primary">Crear</button>
