@@ -85,7 +85,7 @@ public class ProyectoController {
 	
 	
 	@PutMapping("/editar/{id}")
-	public String procesarEditarProyecto(@Valid Proyecto proyecto, Model model, @PathVariable Integer id) {
+	public String procesarEditarProyecto(@Valid Proyecto proyecto, Model model, @PathVariable("id") Integer id) {
 		Proyecto proyectoEditado = proyectoRepository.save(proyecto);
 		model.addAttribute("proyecto", proyectoEditado);
 		return "views/proyectoEdit";
