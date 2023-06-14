@@ -29,24 +29,24 @@ public class DocumentoController {
 	public String listarDocumentos(Model model) {
 		List<Documento> documentos = documentoRepository.findAll();
 		model.addAttribute("documentos", documentos);
-		return "";
+		return "views/documentoListar";
 	}
 	
 	@GetMapping("/crear")
 	public String crearDocumento(@Valid Documento documento) {
-		return "";
+		return "views/crearDocumento";
 	}
 	
 	@PostMapping("/crear")
 	public String procesarCrearDocumento(@Valid Documento documento, BindingResult result, Model model) {
 		Documento documentoCreado = documentoRepository.save(documento);
 		model.addAttribute("documento", documentoCreado);
-		return "";
+		return "redirect:/proyecto";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String editarDocumentoVista(Documento documento) {
-		return ""; 
+		return "views/editarDocumento"; 
 	}
 	
 	

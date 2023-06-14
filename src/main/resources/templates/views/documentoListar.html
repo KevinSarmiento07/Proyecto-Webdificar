@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Selecciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Documentos</h1>
+        
+       <table class="table">
+           <thead class="thead-light">
+               <tr>
+                   <th>Nombre</th>
+                   <th>Descripcion</th>
+                   <th>URL</th>
+                   <th>Fecha</th>
+                   <th>Acciones</th>
+               </tr>
+           </thead>
+           <tbody>
+           
+           	 <tr th:each="documento : ${documentos}">
+                   <td th:text="${documento.nombre}"></td>
+                   <td th:text="${documento.descripcion}"></td>
+                   <td th:text="${documento.url}"></td>
+                   <td th:text="${documento.fecha}"></td>
+                   <td>
+                       <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+                       <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+	<a class="btn btn-success" th:href="@{/documento/crear}">Registrar un Documento</a> 
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

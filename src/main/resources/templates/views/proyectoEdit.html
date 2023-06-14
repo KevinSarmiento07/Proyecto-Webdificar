@@ -103,18 +103,14 @@
 						                    <td th:text="${documento.url}"></td>
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
-						                        <a class="btn btn-primary" th:href="@{/}">Editar</a>
-						                        <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
-						                        <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
+						                        <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+						                        <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
 						                    </td>
 						                </tr>
-						            
-						            
-						             
-						               
 						            </tbody>
 						        </table>
-                            	
+								<a class="btn btn-success" th:href="@{/documento/crear}">Registrar un Documento</a>         
+								<a class="btn btn-success" th:href="@{/documento}">Listar Documentos</a>                     	
                             	
                             	 
                             	
