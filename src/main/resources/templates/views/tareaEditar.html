@@ -94,6 +94,7 @@
                       <label for="fechaFin">Fecha de Fin:</label>
                       <input type="date" class="form-control" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
                   </div>
+                  
                   <div class="form-group">
                     <label for="proyecto">Proyecto al que pertenece:</label>
                     <select id="proyecto" name="proyecto" class="form-control" th:field="*{proyecto}">
@@ -106,6 +107,8 @@
                         <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:field="${trabajador.nombre}"></option>
                     </select>
                   </div>
+                  
+                  
                   <div class="form-group">
                     <label for="trabajadorEncargado">Es asignado por el trabajador:</label>
                     <select id="trabajadorEncargado" name="trabajadorEncargado" class="form-control" th:field="*{trabajadorEncargado}">
@@ -136,14 +139,16 @@
                 <p style="padding-left: 550px;">Acreditado de Alta Calidad</p>
             </div>
             
-            <div class="footer" style="text-align: right; padding-right: 150px;">                
-              <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank">
-                  <img id="imgSistemas" src="https://lh6.googleusercontent.com/-uYxUt6k-M_Y/TW8MSZUBOZI/AAAAAAAAADY/8d68ETgkZpc/s1600/Ing_Sistemas.jpg" alt="Ingeniería de Sistemas">
-              </a>
-              <a href="https://ww2.ufps.edu.co/" target="_blank">
-                  <img id="imgUfps" src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_ufps.png" alt="Ingeniería de Sistemas">
-              </a>                  
-          </div>
+            <div class="footer" style="text-align: right; padding-right: 150px;">
+                
+                <a href="https://ingsistemas.cloud.ufps.edu.co/">
+                    <img id="imgSistemas" src="https://lh6.googleusercontent.com/-uYxUt6k-M_Y/TW8MSZUBOZI/AAAAAAAAADY/8d68ETgkZpc/s1600/Ing_Sistemas.jpg" alt="Ingeniería de Sistemas">
+                  </a>
+                  <a href="https://ww2.ufps.edu.co/">
+                    <img id="imgUfps" src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_ufps.png" alt="Ingeniería de Sistemas">
+                  </a>
+                  
+            </div>
         </div>                
     </div>    
   </footer>

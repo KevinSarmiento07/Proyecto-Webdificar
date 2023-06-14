@@ -71,7 +71,12 @@ public class TareaController {
 	@GetMapping("/editar/{id}")
 	public String editarTarea(@Valid Tarea tarea, Model model) {
 		Tarea tareaEditda = tareaRepository.findById(tarea.getId()).orElse(null);
+		
+		List<Proyecto> proyectos = proyectoRepository.findAll();
+		List<Trabajador> trabajadores = trabajadorRepository.findAll();
 		model.addAttribute("tarea", tareaEditda);
+		model.addAttribute("proyectos", proyectos);
+		model.addAttribute("trabajadores", trabajadores);
 		return "views/tareaEditar";
 	}
 	
