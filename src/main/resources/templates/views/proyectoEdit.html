@@ -84,7 +84,7 @@
                             <div class="form-group">
                             	<label for="documentos">Documentos:</label>
                             	
-                            	<!-- 
+                            	
                             	<table class="table">
 						            <thead class="thead-light">
 						                <tr>
@@ -95,7 +95,8 @@
 						                </tr>
 						            </thead>
 						            <tbody>
-						                <tr th:each="documento : ${documentos}">
+						            <!-- 
+						            	 <tr th:each="documento : ${documentos}">
 						                    <td th:text="${documento.nombre}"></td>
 						                    <td th:text="${documento.descripcion}"></td>
 						                    <td th:text="${documento.url}"></td>
@@ -106,11 +107,15 @@
 						                        <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
 						                    </td>
 						                </tr>
+						            
+						            
+						             -->
+						               
 						            </tbody>
 						        </table>
                             	
                             	
-                            	 -->
+                            	 
                             	
                             </div>
                             <a class="btn" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>
