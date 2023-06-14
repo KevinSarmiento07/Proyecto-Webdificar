@@ -29,35 +29,37 @@ public class DocumentoController {
 	public String listarDocumentos(Model model) {
 		List<Documento> documentos = documentoRepository.findAll();
 		model.addAttribute("documentos", documentos);
-		return "";
+		return "views/documentoListar";
 	}
 	
 	@GetMapping("/crear")
 	public String crearDocumento(@Valid Documento documento) {
-		return "";
+		return "views/documentoCrear";
 	}
 	
 	@PostMapping("/crear")
 	public String procesarCrearDocumento(@Valid Documento documento, BindingResult result, Model model) {
 		Documento documentoCreado = documentoRepository.save(documento);
 		model.addAttribute("documento", documentoCreado);
-		return "";
-	}
-	
-	@GetMapping("/editar/{id}")
-	public String editarDocumentoVista(Documento documento) {
-		return ""; 
-	}
-	
-	
-	@PutMapping("/editar/{id}")
-	public String editarDocumento(@Valid Documento documento, BindingResult result, Model model) {
-		Documento documentoEditado = documentoRepository.findById(documento.getId()).orElse(null);
-		model.addAttribute("documento", documentoEditado);
 		return "redirect:/documento";
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
+	@GetMapping("/editar/{id}")
+	public String editarDocumentoVista(@Valid Documento documento , Model model) {
+		Documento documentoEditado = documentoRepository.findById(documento.getId()).orElse(null);
+		model.addAttribute("documento", documentoEditado);
+		return "views/documentoEditar"; 
+	}
+	
+	
+	@PostMapping("/editar/{id}")
+	public String editarDocumento(@Valid Documento documento, BindingResult result, Model model, @PathVariable("id") Integer id) {
+		documento.setId(id);
+		documentoRepository.save(documento);
+		return "redirect:/documento";
+	}
+	
+	@GetMapping("/eliminar/{id}")
 	public String eliminarDocumento(@PathVariable("id") Integer id) {
 		documentoRepository.deleteById(id);
 		return "redirect:/documento";
