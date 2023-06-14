@@ -1,48 +1,157 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>Ingresar a la página principal</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 100px;
+            background-color: #F5DEB3;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            color: aliceblue;
+        }
+
+
+        img {   
+            width: 100px; /* Ancho deseado de la imagen */
+            height: 100px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+        
+        .imgUfps{
+            padding-top: 10px;
+            width: 270px; /* Ancho deseado de la imagen */
+            height: 350px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+
+    </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Webdificar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>               
+            </ul>
+        </div>
+        <div class="d-flex">
+            <a type="button" class="btn btn-dark" th:href="@{/login/registro}">Registrar</a>
+        </div>
+    </div>
+</nav>
 
 <div class="container">
-        <h1>Tareas</h1>
-        
-       <table class="table">
-           <thead class="thead-light">
-               <tr>
-                   <th>Nombre</th>
-                   <th>Descripcion</th>
-                   <th>Fecha</th>
-                   <th>Fecha Inicio</th>
-                   <th>Fecha Fin</th>
-                   <th>Proyecto:</th>
-                   <th>Trabajador Asignado</th>
-                   <th>Trabajador encargado</th>
-                   <th>Acciones</th>
-               </tr>
-           </thead>
-           <tbody>
-           
-           	 <tr th:each="tarea : ${tareas}">
-                   <td th:text="${tarea.nombre}"></td>
-                   <td th:text="${tarea.descripcion}"></td>
-                   <td th:text="${tarea.fecha}"></td>
-                   <td th:text="${tarea.fechaInicio}"></td>
-                   <td th:text="${tarea.fechaFin}"></td>
-                   <td th:text="${tarea.proyecto.nombre}"></td>
-                   <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
-                   <td th:text="${tarea.trabajadorEncargado.nombre}"></td>
-                   <td>
-                       <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
-                       <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
-                   </td>
-               </tr>
-           </tbody>
-       </table>
-	<a class="btn btn-success" th:href="@{/tarea/registrar}">Registrar una Tarea</a> 
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <a onclick="goBack()" class="btn" style="background-color: #fcce78; border-color: #000; color: black;">volver a editar el proyecto.</a>
+          <br>
+          <br>
+          <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Tareas</h1>                
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Fecha</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Proyecto:</th>
+                                <th>Trabajador Asignado</th>
+                                <th>Trabajador encargado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr th:each="tarea : ${tareas}">
+                                <td th:text="${tarea.nombre}"></td>
+                                <td th:text="${tarea.descripcion}"></td>
+                                <td th:text="${tarea.fecha}"></td>
+                                <td th:text="${tarea.fechaInicio}"></td>
+                                <td th:text="${tarea.fechaFin}"></td>
+                                <td th:text="${tarea.proyecto.nombre}"></td>
+                                <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
+                                <td th:text="${tarea.trabajadorEncargado.nombre}"></td>
+                                <td>
+                                    <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+                                    <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-success" th:href="@{/tarea/registrar}">Registrar una Tarea</a> 
+                </div>
+            </div>
+        </div>
     </div>
-
+</div>
+</body>
+<footer class="footer bg-dark text-light">
+  <div class="container">
+      <div>
+          <div class="footer">
+            <h6 class="text fw-bold">CONTACTO:</h6>
+            <ul class="list-unstyled">
+                <li>Kevin Andres Sarmiento Sierra - 1152061</li>
+                <li>Leonardo Trujillo Vega - 1152071</li>
+                <li>Kevin Alexis Eslava Mantilla - 1152066</li>
+            </ul>
+          </div>
+          <divclass="footer" style="text-align: center; ">
+              <p style="padding-left: 550px; padding-top: 20px;">Programa de Ingeniería de Sistemas</p>
+              <p style="padding-left: 550px;">Acreditado de Alta Calidad</p>
+          </div>
+          
+          <div class="footer" style="text-align: right; padding-right: 150px;">
+              
+              <a href="https://ingsistemas.cloud.ufps.edu.co/">
+                  <img id="imgSistemas" src="https://lh6.googleusercontent.com/-uYxUt6k-M_Y/TW8MSZUBOZI/AAAAAAAAADY/8d68ETgkZpc/s1600/Ing_Sistemas.jpg" alt="Ingeniería de Sistemas">
+                </a>
+                <a href="https://ww2.ufps.edu.co/">
+                  <img id="imgUfps" src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_ufps.png" alt="Ingeniería de Sistemas">
+                </a>
+                
+          </div>
+      </div>                
+  </div>    
+</footer>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
