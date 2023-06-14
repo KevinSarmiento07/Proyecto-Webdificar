@@ -34,6 +34,19 @@
       -webkit-box-orient: vertical;
     }
 
+    img {   
+            width: 100px; /* Ancho deseado de la imagen */
+            height: 100px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+        
+        .imgUfps{
+            padding-top: 10px;
+            width: 270px; /* Ancho deseado de la imagen */
+            height: 350px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
@@ -53,7 +66,7 @@
             </ul>
         </div>
         <div class="d-flex">
-            <a type="button" class="btn btn-dark" th:href="@{/login/registro}"><i class="bi bi-person-circle" style="font-size: 25px;"></i></i></a>
+          <a type="button" class="btn btn-dark" th:href="@{/login}">Cerrar Sesión</a>
         </div>
     </div>
   </nav>
@@ -64,8 +77,6 @@
     <div class="row">
         <div class="col-md">
             <a type="button" class="btn" th:href="@{/proyecto/crear}" style="background-color: #fcce78; border-color: #000; color: black;">Registrar Nuevo Proyecto</a>
-            <a type="button" class="btn" th:href="@{/proyecto/crear}" style="background-color: #fcce78; border-color: #000; color: black;">Proyectos en Curso</a>
-            <a type="button" class="btn" th:href="@{/proyecto/crear}" style="background-color: #fcce78; border-color: #000; color: black;">Proyectos Terminados</a>
         </div>
         
     </div>
