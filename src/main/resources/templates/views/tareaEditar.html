@@ -45,9 +45,6 @@
         }
 
     </style>
-
-  
-
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -100,19 +97,19 @@
                   <div class="form-group">
                     <label for="proyecto">Proyecto al que pertenece:</label>
                     <select id="proyecto" name="proyecto" class="form-control" th:field="*{proyecto}">
-                        <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}" th:text="${proyecto.nombre}"></option>
+                        <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}" th:field="${proyecto.nombre}"></option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="trabajadorAsignado">Se asigna al trabajador:</label>
                     <select id="trabajadorAsignado" name="trabajadorAsignado" class="form-control" th:field="*{trabajadorAsignado}">
-                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}"></option>
+                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:field="${trabajador.nombre}"></option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="trabajadorEncargado">Es asignado por el trabajador:</label>
                     <select id="trabajadorEncargado" name="trabajadorEncargado" class="form-control" th:field="*{trabajadorEncargado}">
-                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}"></option>
+                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:field="${trabajador.nombre}"></option>
                     </select>
                   </div>
                   <button type="submit" class="btn btn-primary">Editar</button>
@@ -134,7 +131,7 @@
                   <li>Kevin Alexis Eslava Mantilla - 1152066</li>
               </ul>
             </div>
-            <divclass="footer" style="text-align: center; ">
+            <div>class="footer" style="text-align: center; ">
                 <p style="padding-left: 550px; padding-top: 20px;">Programa de Ingeniería de Sistemas</p>
                 <p style="padding-left: 550px;">Acreditado de Alta Calidad</p>
             </div>

@@ -169,7 +169,7 @@
                                         <td th:text="${tarea.fechaFin}"></td>
                                         <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
                                         <td>
-                                            <a class="btn btn-primary" th:href="@{/tarea/registrar}">Editar</a>
+                                            <a class="btn btn-primary" th:href="@{/tarea/editar/{id}(id=${tarea.id})}">Editar</a>
                                             <a class="btn btn-danger" th:href="@{/tarea/eliminar/{id}(id=${tarea.id})}">Eliminar</a>
                                         </td>
                                     </tr>

@@ -72,7 +72,7 @@ public class TareaController {
 	public String editarTarea(@Valid Tarea tarea, Model model) {
 		Tarea tareaEditda = tareaRepository.findById(tarea.getId()).orElse(null);
 		model.addAttribute("tarea", tareaEditda);
-		return "";
+		return "views/tareaEditar";
 	}
 	
 	@Transactional
@@ -85,10 +85,10 @@ public class TareaController {
 	
 	
 	@Transactional
-	@PostMapping("/eliminar/{id}")
+	@GetMapping("/eliminar/{id}")
 	public String eliminarTarea(@PathVariable Integer id) {
 		tareaRepository.deleteById(id);
-		return "redirect:/tarea";
+		return "redirect:/tarea/listar/tareas";
 	}
 	
 	
