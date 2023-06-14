@@ -126,11 +126,36 @@
                 <div class="card" style="width: 65rem;">
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
-                        <a class="btn" th:href="/tarea" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
+                        <a class="btn" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
                         <br>
                         <br>
                         <div class="card" style="width: 60rem;">
-                            <h5>lksdjlkñsajd</h5>
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Asignado a:</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                
+                                     <tr th:each="tarea : ${tareas}">
+                                        <td th:text="${tarea.nombre}"></td>
+                                        <td th:text="${tarea.descripcion}"></td>
+                                        <td th:text="${tarea.fechaInicio}"></td>
+                                        <td th:text="${tarea.fechaFin}"></td>
+                                        <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
+                                        <td>
+                                            <a class="btn btn-primary" th:href="@{/}">Editar</a>
+                                            <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+                                            <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>                        
                     </div>
                 </div>
