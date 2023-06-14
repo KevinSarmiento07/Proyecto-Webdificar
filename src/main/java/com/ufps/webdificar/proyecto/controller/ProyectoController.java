@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ufps.webdificar.proyecto.entities.Documento;
 import com.ufps.webdificar.proyecto.entities.Proyecto;
 import com.ufps.webdificar.proyecto.entities.Tarea;
 import com.ufps.webdificar.proyecto.entities.Trabajador;
+import com.ufps.webdificar.proyecto.repositories.DocumentoRepository;
 import com.ufps.webdificar.proyecto.repositories.ProyectoRepository;
 import com.ufps.webdificar.proyecto.repositories.TareaRepository;
 import com.ufps.webdificar.proyecto.repositories.TrabajadorRepository;
@@ -34,6 +36,9 @@ public class ProyectoController {
 	
 	@Autowired
 	private TareaRepository tareaRepository;
+	
+	@Autowired
+	private DocumentoRepository documentoRepository;
 
 	@Autowired
 	private TrabajadorRepository trabajadorRepository;
@@ -68,9 +73,12 @@ public class ProyectoController {
 	public String editarProyecto(@Valid Proyecto proyecto, Model model, BindingResult result) {
 		
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
+		List<Documento> documentos = documentoRepository.findAll();
 		List<Trabajador> trabajadores = trabajadorRepository.findAll();
+		model.addAttribute("documentos", documentos);
 		model.addAttribute("proyecto", proyectoEditar);
 		model.addAttribute("trabajadores", trabajadores);
+		
 		return "views/proyectoEdit"; //redireccionar a editar proyectos
 	}
 	
