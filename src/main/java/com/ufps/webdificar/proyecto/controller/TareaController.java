@@ -76,7 +76,7 @@ public class TareaController {
 	}
 	
 	@Transactional
-	@GetMapping("/editar/{id}")
+	@PostMapping("/editar/{id}")
 	public String procesarEditarTarea(@PathVariable Integer id, Tarea tarea) {
 		tarea.setId(id);
 		tareaRepository.save(tarea);
