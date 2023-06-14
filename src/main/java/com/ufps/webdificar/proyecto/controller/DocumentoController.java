@@ -34,19 +34,19 @@ public class DocumentoController {
 	
 	@GetMapping("/crear")
 	public String crearDocumento(@Valid Documento documento) {
-		return "views/crearDocumento";
+		return "views/documentoCrear";
 	}
 	
 	@PostMapping("/crear")
 	public String procesarCrearDocumento(@Valid Documento documento, BindingResult result, Model model) {
 		Documento documentoCreado = documentoRepository.save(documento);
 		model.addAttribute("documento", documentoCreado);
-		return "redirect:/proyecto";
+		return "redirect:/documento";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String editarDocumentoVista(Documento documento) {
-		return "views/editarDocumento"; 
+		return "views/documentoEditar"; 
 	}
 	
 	
