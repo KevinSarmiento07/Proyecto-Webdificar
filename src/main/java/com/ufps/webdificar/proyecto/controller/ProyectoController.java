@@ -75,10 +75,11 @@ public class ProyectoController {
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
 		List<Documento> documentos = documentoRepository.findAll();
 		List<Trabajador> trabajadores = trabajadorRepository.findAll();
+		List<Tarea> tareas = tareaRepository.findAll();
 		model.addAttribute("documentos", documentos);
 		model.addAttribute("proyecto", proyectoEditar);
 		model.addAttribute("trabajadores", trabajadores);
-		
+		model.addAttribute("tareas", tareas);
 		return "views/proyectoEdit"; //redireccionar a editar proyectos
 	}
 	

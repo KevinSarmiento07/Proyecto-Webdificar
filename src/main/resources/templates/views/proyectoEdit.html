@@ -65,7 +65,7 @@
                             <input type="text" id="nombre" name="nombre" th:value="*{nombre}" hidden>
                             <div class="form-group">
                                 <label for="encargado">Encargado:</label>
-                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" readonly>
+                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" disabled>
                                     <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}" readonly></option>
                                 </select>
                             </div>
@@ -132,11 +132,36 @@
                 <div class="card" style="width: 65rem;">
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
-                        <a class="btn" href="" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
+                        <a class="btn" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
                         <br>
                         <br>
                         <div class="card" style="width: 60rem;">
-                            <h5>lksdjlkñsajd</h5>
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Asignado a:</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                
+                                     <tr th:each="tarea : ${tareas}">
+                                        <td th:text="${tarea.nombre}"></td>
+                                        <td th:text="${tarea.descripcion}"></td>
+                                        <td th:text="${tarea.fechaInicio}"></td>
+                                        <td th:text="${tarea.fechaFin}"></td>
+                                        <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
+                                        <td>
+                                            <a class="btn btn-primary" th:href="@{/}">Editar</a>
+                                            <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+                                            <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>                        
                     </div>
                 </div>
@@ -182,6 +207,9 @@
 
             const cancelarEditar = document.getElementById("cancelarEditar");
             cancelarEditar.hidden = false;
+
+            const trabajador = document.getElementById("trabajador");
+            trabajador.removeAttribute("disabled");
         }
 
         document.getElementById("proyectoEditForm").addEventListener("submit", function(event) {

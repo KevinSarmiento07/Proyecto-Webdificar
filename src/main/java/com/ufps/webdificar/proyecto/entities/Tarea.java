@@ -37,13 +37,13 @@ public class Tarea {
 	@Column(name = "tipo_tarea")
 	private Integer tipoTarea;
 
-	private Date fecha;
+	private String fecha;
 
 	@Column(name = "fecha_inicio")
-	private Date fechaInicio;
+	private String fechaInicio;
 
 	@Column(name = "fecha_fin")
-	private Date fechaFin;
+	private String fechaFin;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "proyecto_id")
