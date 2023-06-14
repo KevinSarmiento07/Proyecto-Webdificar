@@ -21,6 +21,7 @@ import com.ufps.webdificar.proyecto.entities.Tarea;
 import com.ufps.webdificar.proyecto.entities.Trabajador;
 import com.ufps.webdificar.proyecto.repositories.ProyectoRepository;
 import com.ufps.webdificar.proyecto.repositories.TareaRepository;
+import com.ufps.webdificar.proyecto.repositories.TrabajadorRepository;
 
 import jakarta.validation.Valid;
 
@@ -33,6 +34,9 @@ public class ProyectoController {
 	
 	@Autowired
 	private TareaRepository tareaRepository;
+
+	@Autowired
+	private TrabajadorRepository trabajadorRepository;
 	
 	@GetMapping("/listar")
 	public String listarProyectos(Model model) {
@@ -44,7 +48,9 @@ public class ProyectoController {
 	
 	
 	@GetMapping("/crear")
-	public String visyaFormProyecto(Proyecto proyecto) {
+	public String visyaFormProyecto(Proyecto proyecto, Model model, BindingResult result) {
+		List<Trabajador> trabajadores = trabajadorRepository.findAll();
+		model.addAttribute("trabajadores", trabajadores);
 		return "views/proyectoRegistrar";
 	}
 	

@@ -49,17 +49,15 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h1 class="card-title">Registrar Proyecto</h1>
-              <form th:action="@{/proyecto/crear}" th:object="${proyecto}" method="post">
+              <h1 class="card-title">Registrar tarea</h1>
+              <form th:action="@{/tarea/crear}" th:object="${tarea}" method="post">
                   <div class="form-group">
                       <label for="nombre">Nombre:</label>
                       <input type="text" class="form-control" id="nombre" name="nombre" th:value="*{nombre}" required>
                   </div>
                   <div class="form-group">
-                    <label for="encargado">Encargado:</label>
-                    <select id="encargado" name="encargado" class="form-control" th:field="*{trabajador}">
-                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}"></option>
-                    </select>
+                      <label for="encargado">Encargado:</label>
+                      <input type="text" class="form-control" id="encargado" name="encargado" th:value="*{encargado}" required>
                   </div>
                   <div class="form-group">
                       <label for="fechaInicio">Fecha de Inicio:</label>
