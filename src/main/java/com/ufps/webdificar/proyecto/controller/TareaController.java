@@ -28,8 +28,13 @@ public class TareaController {
 	
 	@Autowired
 	private ProyectoRepository proyectoRepository;
-	
+
 	@GetMapping
+	public String registro() {
+		return "views/tareaRegistrar";
+	}
+	
+	@GetMapping("/listar")
 	public String listarTareas(Model model) {
 		
 		List<Tarea> tareas = tareaRepository.findAll();

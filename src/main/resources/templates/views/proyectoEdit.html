@@ -65,7 +65,7 @@
                             <input type="text" id="nombre" name="nombre" th:value="*{nombre}" hidden>
                             <div class="form-group">
                                 <label for="encargado">Encargado:</label>
-                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" readonly>
+                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" disabled>
                                     <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}" readonly></option>
                                 </select>
                             </div>
@@ -108,16 +108,8 @@
 						                        <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
 						                    </td>
 						                </tr>
-						            
-						            
-						             
-						               
 						            </tbody>
 						        </table>
-                            	
-                            	
-                            	 
-                            	
                             </div>
                             <a class="btn" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>
                             <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
@@ -134,7 +126,7 @@
                 <div class="card" style="width: 65rem;">
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
-                        <a class="btn" href="" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
+                        <a class="btn" th:href="/tarea" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
                         <br>
                         <br>
                         <div class="card" style="width: 60rem;">
@@ -184,6 +176,9 @@
 
             const cancelarEditar = document.getElementById("cancelarEditar");
             cancelarEditar.hidden = false;
+
+            const trabajador = document.getElementById("trabajador");
+            trabajador.removeAttribute("disabled");
         }
 
         document.getElementById("proyectoEditForm").addEventListener("submit", function(event) {
