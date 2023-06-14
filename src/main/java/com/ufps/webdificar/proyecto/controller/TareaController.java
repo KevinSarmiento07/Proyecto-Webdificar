@@ -88,7 +88,7 @@ public class TareaController {
 	@PostMapping("/eliminar/{id}")
 	public String eliminarTarea(@PathVariable Integer id) {
 		tareaRepository.deleteById(id);
-		return "redirect:/tarea";
+		return "redirect:/tarea/listar/tareas";
 	}
 	
 	
