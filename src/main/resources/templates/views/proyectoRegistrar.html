@@ -19,6 +19,19 @@
       height: 100px;
       color: aliceblue;
     }
+
+    img {   
+        width: 100px; /* Ancho deseado de la imagen */
+        height: 100px; /* Altura automática proporcional a la anchura */
+        background-color: whitesmoke;
+    }
+    
+    .imgUfps{
+        padding-top: 10px;
+        width: 270px; /* Ancho deseado de la imagen */
+        height: 350px; /* Altura automática proporcional a la anchura */
+        background-color: whitesmoke;
+    }
     </style>
 
 </head>
@@ -38,7 +51,7 @@
             </ul>
         </div>
         <div class="d-flex">
-            <a type="button" class="btn btn-dark" th:href="@{/login/registro}"><i class="bi bi-person-circle" style="font-size: 25px;"></i></i></a>
+          <a type="button" class="btn btn-dark" th:href="@{/login}">Cerrar Sesión</a>
         </div>
     </div>
   </nav>
