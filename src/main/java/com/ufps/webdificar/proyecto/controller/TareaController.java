@@ -72,7 +72,7 @@ public class TareaController {
 	public String editarTarea(@Valid Tarea tarea, Model model) {
 		Tarea tareaEditda = tareaRepository.findById(tarea.getId()).orElse(null);
 		model.addAttribute("tarea", tareaEditda);
-		return "";
+		return "views/tareaEditar";
 	}
 	
 	@Transactional
