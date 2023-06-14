@@ -35,7 +35,10 @@ public class Proyecto {
 	private Integer id;
 	
 	private String nombre;
-	private String encargado;
+	
+	@ManyToMany
+	@JoinColumn(name = "id_encargado")
+	private Trabajador trabajador;
 	
 	@Column(name = "fecha_inicio")
 	private String fechaInicio;
