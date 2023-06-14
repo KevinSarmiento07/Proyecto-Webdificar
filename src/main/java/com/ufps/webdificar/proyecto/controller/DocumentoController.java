@@ -52,7 +52,7 @@ public class DocumentoController {
 	}
 	
 	
-	@PutMapping("/editar/{id}")
+	@PostMapping("/editar/{id}")
 	public String editarDocumento(@Valid Documento documento, BindingResult result, Model model) {
 		Documento documentoEditado = documentoRepository.findById(documento.getId()).orElse(null);
 		model.addAttribute("documento", documentoEditado);
