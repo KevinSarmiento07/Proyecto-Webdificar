@@ -101,7 +101,7 @@
 						                    <td th:text="${documento.nombre}"></td>
 						                    <td th:text="${documento.descripcion}"></td>
 						                     <td>
-						                   		 <a target="_blank"  href="${documento.url}" th:text="${documento.url}"></a>
+						                   		 <a  target="_blank"  th:href="@{${documento.url}}" th:text="${documento.url}"></a>
 						                   	</td>
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
