@@ -1,6 +1,5 @@
 package com.ufps.webdificar.proyecto.entities;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -36,7 +36,7 @@ public class Proyecto {
 	
 	private String nombre;
 	
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name = "id_encargado")
 	private Trabajador trabajador;
 	
