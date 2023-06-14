@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>Webdificar</title>
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 100px;
+            background-color: #F5DEB3;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            color: aliceblue;
+        }
+
+        .jumbotron {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Webdificar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio</a>
+                </li>               
+            </ul>
+        </div>
+        <div class="d-flex">
+            <a type="button" class="btn btn-dark" th:href="@{/login}">Iniciar Sesión</a>
+            <a type="button" class="btn btn-dark" th:href="@{/login/registro}">Registrar</a>
+        </div>
+    </div>
+
+</nav>
+
+<div class="container">
+    <div class="mt-5">
+        <h1 class="text-center">Bienvenido a Webdificar</h1>
+        <p class="lead text-center">
+            Webdificar es una aplicación diseñada para llevar el progreso de proyectos de obras civiles. Si estás a cargo
+            de proyectos de construcción o ingeniería civil, esta herramienta te ayudará a gestionar y monitorear cada
+            etapa de tus proyectos de manera eficiente.
+        </p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="/images/torre1.jpg" alt="Imagen 1">
+                <div class="card-body">
+                    <h5 class="card-title">Proyecto 1</h5>
+                    <p class="card-text">Encargado: Juan Pérez</p>
+                    <p class="card-text">Fecha de Inicio: 01/06/2023</p>
+                    <p class="card-text">Fecha de Fin: 30/09/2023</p>
+                    <p class="card-text">Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="/images/torre2.jpg" alt="Imagen 2">
+                <div class="card-body">
+                    <h5 class="card-title">Proyecto 2</h5>
+                    <p class="card-text">Encargado: María Gómez</p>
+                    <p class="card-text">Fecha de Inicio: 15/07/2023</p>
+                    <p class="card-text">Fecha de Fin: 30/11/2023</p>
+                    <p class="card-text">Descripción: Ut tincidunt, urna nec fringilla molestie, velit ipsum
+                        vulputate massa.</p>
+                    <a href="#" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="/images/torre3.jpg" alt="Imagen 3">
+                <div class="card-body">
+                    <h5 class="card-title">Proyecto 3</h5>
+                    <p class="card-text">Encargado: Carlos López</p>
+                    <p class="card-text">Fecha de Inicio: 10/08/2023</p>
+                    <p class="card-text">Fecha de Fin: 31/12/2023</p>
+                    <p class="card-text">Descripción: Sed iaculis ultricies luctus. In consectetur bibendum augue, a
+                        rhoncus turpis vulputate non.</p>
+                    <a href="#" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <hr>
+    <br/>
+
+    <!-- Acerca de nosotros -->
+    <div class="jumbotron">
+        <h1 class="display-4">Acerca de Webdificar</h1>
+        <p class="lead">Webdificar es una empresa líder en el sector de la gestión de proyectos de obras civiles. Nuestra misión es proporcionar herramientas y soluciones tecnológicas para simplificar y mejorar la gestión de proyectos en el campo de la construcción y la ingeniería civil.</p>
+        <hr class="my-4">
+        <p>Desde nuestra fundación en 2010, nos hemos comprometido a brindar a nuestros clientes las mejores herramientas y servicios para garantizar el éxito de sus proyectos. Nuestro equipo de expertos en desarrollo de software y profesionales de la construcción trabaja de la mano para crear soluciones innovadoras y adaptadas a las necesidades específicas de cada proyecto.</p>
+        <p>En Webdificar, creemos en la colaboración y el enfoque centrado en el cliente. Trabajamos estrechamente con nuestros clientes para comprender sus objetivos y desafíos, y así poder ofrecer soluciones personalizadas que optimicen el proceso de gestión de proyectos.</p>
+        <p>Además de nuestras soluciones tecnológicas, también ofrecemos servicios de consultoría y capacitación para ayudar a nuestros clientes a implementar y aprovechar al máximo nuestras herramientas.</p>
+        <p>Confía en Webdificar para llevar tus proyectos de obras civiles al siguiente nivel. ¡Estamos aquí para ayudarte a alcanzar el éxito!</p>
+    </div>
+
+    <br/>
+    <hr>
+    <br/>
+
+    <!-- Servicios  -->
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Servicios de Webdificar</h1>
+            <p class="card-text">En Webdificar, ofrecemos una amplia gama de servicios diseñados para satisfacer todas las necesidades de gestión de proyectos de obras civiles. Nuestro equipo de expertos está comprometido en brindar soluciones integrales y personalizadas para garantizar el éxito de tus proyectos. A continuación, te presentamos algunos de los servicios que ofrecemos:</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">1. Planificación y programación de proyectos</h5>
+            <p class="card-text">Nuestros expertos en gestión de proyectos te ayudarán a desarrollar un plan detallado y una programación efectiva para tus proyectos de obras civiles. Utilizamos herramientas avanzadas y metodologías probadas para asegurarnos de que los proyectos se ejecuten de manera eficiente y dentro del plazo establecido.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">2. Control de costos y presupuestos</h5>
+            <p class="card-text">El control de costos es crucial en cualquier proyecto de obra civil. Nuestro equipo te ayudará a establecer un presupuesto adecuado y a realizar un seguimiento constante de los costos a lo largo del proyecto. Utilizamos herramientas especializadas para identificar posibles desviaciones y tomar medidas correctivas oportunas.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">3. Gestión de recursos humanos</h5>
+            <p class="card-text">Contamos con profesionales capacitados en la gestión de recursos humanos en proyectos de obras civiles. Te ayudaremos a seleccionar y asignar el personal adecuado para cada etapa del proyecto, optimizando así el rendimiento y la eficiencia del equipo de trabajo.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">4. Monitoreo y control de calidad</h5>
+            <p class="card-text">La calidad es fundamental en cualquier proyecto de obras civiles. Nuestro equipo se encargará de establecer los estándares de calidad, implementar sistemas de control y monitoreo, y llevar a cabo inspecciones regulares para garantizar que se cumplan los requisitos y se entregue un producto final de alta calidad.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">5. Gestión de riesgos y seguridad</h5>
+            <p class="card-text">Identificar y mitigar los riesgos es esencial para el éxito de cualquier proyecto de obra civil. Nuestro equipo te ayudará a identificar los posibles riesgos, desarrollar estrategias de mitigación y garantizar el cumplimiento de las normas de seguridad en todas las etapas del proyecto.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <br/>
+    <hr>
+    <br/>
+
+    <!-- Contacto -->
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Contacto</h1>
+            <p class="card-text">Si tienes alguna pregunta, consulta o simplemente quieres ponerte en contacto con nosotros, puedes utilizar la siguiente información de contacto:</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Información de contacto</h5>
+                    <p class="card-text">Dirección: Calle Principal, Ciudad, País</p>
+                    <p class="card-text">Teléfono: +1 234 567 890</p>
+                    <p class="card-text">Email: info@webdificar.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Formulario de contacto</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje:</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Escribe tu mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <h6 class="text fw-bold">CONTACTO:</h6>
+              <ul class="list-unstyled">
+                  <li>Kevin Andres Sarmiento Sierra - 1152061</li>
+                  <li>Leonardo Trujillo Vega - 1152071</li>
+                  <li>Kevin Alexis Eslava Mantilla - 1152066</li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
