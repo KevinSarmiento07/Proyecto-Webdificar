@@ -45,7 +45,9 @@ public class DocumentoController {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String editarDocumentoVista(Documento documento) {
+	public String editarDocumentoVista(@Valid Documento documento , Model model) {
+		Documento documentoEditado = documentoRepository.findById(documento.getId()).orElse(null);
+		model.addAttribute("documento", documentoEditado);
 		return "views/documentoEditar"; 
 	}
 	
