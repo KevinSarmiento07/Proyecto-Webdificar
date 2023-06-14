@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ingresar a la página principal</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+    <style>
+      body {
+        padding-top: 70px;
+        padding-bottom: 100px; 
+        background-color: #F5DEB3;     
+      }
+  
+      
+  
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        color: aliceblue;
+      }
+    </style>
+
+  
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Webdificar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>               
+            </ul>
+        </div>
+        <div class="d-flex">
+            <a type="button" class="btn btn-dark" th:href="@{/login/registro}">Registrar</a>
+        </div>
+    </div>
+</nav>
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Iniciar sesión</h5>
+                    <form th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Correo Electrónico</label>
+                            <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" name="correo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="contrasena" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #F5DEB3; border-color: #F5DEB3; color: black;">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+<footer class="footer bg-dark text-light">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <h6 class="text fw-bold">CONTACTO:</h6>
+            <ul class="list-unstyled">
+                <li>Kevin Andres Sarmiento Sierra - 1152061</li>
+                <li>Leonardo Trujillo Vega - 1152071</li>
+                <li>Kevin Alexis Eslava Mantilla - 1152066</li>
+            </ul>
+          </div>
+      </div>        
+  </div>
+</footer>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
