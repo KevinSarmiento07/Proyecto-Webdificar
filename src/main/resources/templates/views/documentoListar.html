@@ -71,10 +71,12 @@
 </nav>
 
 <div class="container">
+    <a onclick="goBack()" class="btn" style="background-color: #fcce78; border-color: #000; color: black;">volver a editar el proyecto.</a>
+    <br>
+    <br>
     <div class="card">
         <div class="card-body">
-                <h1 class="card-title">Documentos</h1>
-                
+            <h1 class="card-title">Documentos</h1>                
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -135,6 +137,11 @@
       </div>                
   </div>    
 </footer>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
