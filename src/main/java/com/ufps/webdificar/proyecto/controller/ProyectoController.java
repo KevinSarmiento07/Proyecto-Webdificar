@@ -68,7 +68,9 @@ public class ProyectoController {
 	public String editarProyecto(@Valid Proyecto proyecto, Model model, BindingResult result) {
 		
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
+		List<Trabajador> trabajadores = trabajadorRepository.findAll();
 		model.addAttribute("proyecto", proyectoEditar);
+		model.addAttribute("trabajadores", trabajadores);
 		return "views/proyectoEdit"; //redireccionar a editar proyectos
 	}
 	
