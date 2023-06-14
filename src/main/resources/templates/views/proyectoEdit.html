@@ -65,7 +65,7 @@
                             <input type="text" id="nombre" name="nombre" th:value="*{nombre}" hidden>
                             <div class="form-group">
                                 <label for="encargado">Encargado:</label>
-                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}">
+                                <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" readonly>
                                     <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}"></option>
                                 </select>
                             </div>
