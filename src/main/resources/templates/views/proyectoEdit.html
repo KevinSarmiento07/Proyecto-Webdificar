@@ -133,7 +133,7 @@
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
                         <a class="btn" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
-                        <a class="btn" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Listar tarea</a>          
+                        <a class="btn" th:href="@{/tarea/listar/tareas}" id="listar" style="background-color: #fcce78; border-color: #000; color: black;">Listar tarea</a>          
                         <br>
                         <br>
                         <div class="card" style="width: 60rem;">
@@ -156,9 +156,8 @@
                                         <td th:text="${tarea.fechaFin}"></td>
                                         <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
                                         <td>
-                                            <a class="btn btn-primary" th:href="@{/}">Editar</a>
-                                            <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
-                                            <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
+                                            <a class="btn btn-primary" th:href="@{/tarea/registrar}">Editar</a>
+                                            <a class="btn btn-danger" th:href="@{/tarea/eliminar/{id}(id=${tarea.id})}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </tbody>

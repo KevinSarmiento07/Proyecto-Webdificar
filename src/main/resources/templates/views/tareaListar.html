@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container">
+        <h1>Tareas</h1>
+        
+       <table class="table">
+           <thead class="thead-light">
+               <tr>
+                   <th>Nombre</th>
+                   <th>Descripcion</th>
+                   <th>Fecha</th>
+                   <th>Fecha Inicio</th>
+                   <th>Fecha Fin</th>
+                   <th>Proyecto:</th>
+                   <th>Trabajador Asignado</th>
+                   <th>Trabajador encargado</th>
+                   <th>Acciones</th>
+               </tr>
+           </thead>
+           <tbody>
+           
+           	 <tr th:each="tarea : ${tareas}">
+                   <td th:text="${tarea.nombre}"></td>
+                   <td th:text="${tarea.descripcion}"></td>
+                   <td th:text="${tarea.fecha}"></td>
+                   <td th:text="${tarea.fechaInicio}"></td>
+                   <td th:text="${tarea.fechaFin}"></td>
+                   <td th:text="${tarea.proyecto.nombre}"></td>
+                   <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
+                   <td th:text="${tarea.trabajadorEncargado.nombre}"></td>
+                   <td>
+                       <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+                       <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+	<a class="btn btn-success" th:href="@{/tarea/registrar}">Registrar una Tarea</a> 
+    </div>
+
+</body>
+</html>

@@ -60,11 +60,11 @@ public class TareaController {
 		return "redirect:/proyecto/editar/"+tareaNueva.getProyecto().getId().toString();
 	}
 	
-	@GetMapping("/crear")
+	@GetMapping("/listar/tareas")
 	public String crearTarea(Model model) {
-		List<Proyecto> proyectos = proyectoRepository.findAll();
-		model.addAttribute("proyectos", proyectos);
-		return ""; 
+		List<Tarea> tareas = tareaRepository.findAll();
+		model.addAttribute("tareas", tareas);
+		return "views/tareaListar"; 
 	}
 	
 	
@@ -76,7 +76,7 @@ public class TareaController {
 	}
 	
 	@Transactional
-	@PutMapping("/editar/{id}")
+	@GetMapping("/editar/{id}")
 	public String procesarEditarTarea(@PathVariable Integer id, Tarea tarea) {
 		tarea.setId(id);
 		tareaRepository.save(tarea);
