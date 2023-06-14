@@ -80,7 +80,7 @@ public class TareaController {
 	public String procesarEditarTarea(@PathVariable Integer id, Tarea tarea) {
 		tarea.setId(id);
 		tareaRepository.save(tarea);
-		return "redirect:/tarea";//redirect
+		return "redirect:/tarea/listar/tareas";//redirect
 	}
 	
 	
