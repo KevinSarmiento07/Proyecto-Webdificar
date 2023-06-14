@@ -30,6 +30,13 @@
         .jumbotron {
             background-color: white;
         }
+
+        img {
+            padding-top: 10px;
+            width: 270px; /* Ancho deseado de la imagen */
+            height: auto; /* Altura automática proporcional a la anchura */
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -238,8 +245,8 @@
 
 <footer class="footer bg-dark text-light">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
+        <div>
+            <div class="footer">
               <h6 class="text fw-bold">CONTACTO:</h6>
               <ul class="list-unstyled">
                   <li>Kevin Andres Sarmiento Sierra - 1152061</li>
@@ -247,14 +254,13 @@
                   <li>Kevin Alexis Eslava Mantilla - 1152066</li>
               </ul>
             </div>
-        </div>
-
-        <div class="row">
-            <a href="https://www.ejemplo.com">
-                <img src="ruta_de_la_imagen" alt="Descripción de la imagen">
-              </a>
-        </div>
-    </div>
+            <div class="footer" style="text-align: right; padding-right: 150px;">
+                <a href="https://ingsistemas.cloud.ufps.edu.co/">
+                    <img src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_vertical_ingsistemas_ht180.png" alt="Ingeniería de Sistemas">
+                  </a>
+            </div>
+        </div>                
+    </div>    
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
