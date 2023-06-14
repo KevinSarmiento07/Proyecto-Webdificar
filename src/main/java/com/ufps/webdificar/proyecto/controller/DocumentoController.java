@@ -53,9 +53,9 @@ public class DocumentoController {
 	
 	
 	@PostMapping("/editar/{id}")
-	public String editarDocumento(@Valid Documento documento, BindingResult result, Model model) {
-		Documento documentoEditado = documentoRepository.findById(documento.getId()).orElse(null);
-		model.addAttribute("documento", documentoEditado);
+	public String editarDocumento(@Valid Documento documento, BindingResult result, Model model, @PathVariable("id") Integer id) {
+		documento.setId(id);
+		documentoRepository.save(documento);
 		return "redirect:/documento";
 	}
 	
