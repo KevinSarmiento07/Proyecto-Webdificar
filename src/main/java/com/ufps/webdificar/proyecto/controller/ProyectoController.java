@@ -1,5 +1,6 @@
 package com.ufps.webdificar.proyecto.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -75,7 +76,14 @@ public class ProyectoController {
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
 		List<Documento> documentos = documentoRepository.findAll();
 		List<Trabajador> trabajadores = trabajadorRepository.findAll();
-		List<Tarea> tareas = tareaRepository.findAll();
+		List<Tarea> tareas = new ArrayList<>();
+		
+		for(Tarea tarea : tareaRepository.findAll()) {
+			if(proyectoEditar.getId() == tarea.getProyecto().getId()) {
+				tareas.add(tarea);
+			}
+		}
+		
 		model.addAttribute("documentos", documentos);
 		model.addAttribute("proyecto", proyectoEditar);
 		model.addAttribute("trabajadores", trabajadores);
