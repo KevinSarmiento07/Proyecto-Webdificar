@@ -101,8 +101,8 @@
 						                    <td th:text="${documento.nombre}"></td>
 						                    <td th:text="${documento.descripcion}"></td>
 						                     <td>
-						                   		 <a  target="_blank"  th:href="@{${documento.url}}" th:text="${documento.url}"></a>
-						                   	</td>
+								                <a th:href="@{${documento.url}}" target="_blank" th:text="${documento.url}"></a>
+								            </td>
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
 						                        <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
