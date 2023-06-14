@@ -83,6 +83,8 @@
                             </div>
                             <div class="form-group">
                             	<label for="documentos">Documentos:</label>
+                            	
+                            	<!-- 
                             	<table class="table">
 						            <thead class="thead-light">
 						                <tr>
@@ -99,13 +101,17 @@
 						                    <td th:text="${documento.url}"></td>
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
-						                        <a class="btn btn-primary" th:href="@{/controlador/selecciones/editar/{id}(id=${seleccion.id})}">Editar</a>
-						                        <a class="btn btn-danger" th:href="@{/controlador/selecciones/eliminar/{id}(id=${seleccion.id})}">Eliminar</a>
-						                        <a class="btn btn-secondary" th:href="@{/controlador/selecciones/{id}/resultados(id=${seleccion.id})}">Resultados</a>
+						                        <a class="btn btn-primary" th:href="@{/}">Editar</a>
+						                        <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+						                        <a class="btn btn-secondary" th:href="@{/}">Resultados</a>
 						                    </td>
 						                </tr>
 						            </tbody>
 						        </table>
+                            	
+                            	
+                            	 -->
+                            	
                             </div>
                             <a class="btn" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>
                             <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
