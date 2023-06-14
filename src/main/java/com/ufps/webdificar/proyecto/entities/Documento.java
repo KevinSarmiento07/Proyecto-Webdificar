@@ -36,7 +36,7 @@ public class Documento {
 
 	private String url;
 
-	private Date fecha;
+	private String fecha;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "trabajador_id")
