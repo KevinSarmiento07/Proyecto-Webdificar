@@ -42,7 +42,7 @@ public class TrabajadorServiceImple implements TrabajadorInterface {
 
 	@Override
 	public Trabajador getByCorreo(String correo) {
-		return trabajadorRepository.findByCorreo(correo);
+		return trabajadorRepository.findByUsername(correo);
 	}
 
 	

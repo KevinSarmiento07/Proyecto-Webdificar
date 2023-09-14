@@ -1,12 +1,13 @@
 package com.ufps.webdificar.proyecto.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,17 +27,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "trabajador", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
+@Table(name = "trabajador")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Trabajador {
+public class Trabajador implements Serializable{
 
-	public Trabajador(String nombre, String contrasena, String documento, String correo) {
-		this.nombre = nombre;
-		this.contrasena = contrasena;
-		this.documento = documento;
-		this.correo = correo;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Trabajador() {
+		this.roles = new ArrayList<Role>();
 	}
 
 	@Id
@@ -45,16 +47,26 @@ public class Trabajador {
 
 	@NotEmpty
 	private String nombre;
-	@NotEmpty
-	private String contrasena;
+	
+	
+	private boolean enabled;
 
 	@NotEmpty
 	private String documento;
 	
 	@Email
 	@NotEmpty
-	private String correo;
-	private Integer rol;
+	@Column(length = 255,unique = true)
+	private String username;
+	
+	@Column(length = 60)
+	private String password;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "trabajador_id")
+	private List<Role> roles;
+	
+	
 	private Integer permiso_documento;
 	private Integer permitir_seguimiento;
 

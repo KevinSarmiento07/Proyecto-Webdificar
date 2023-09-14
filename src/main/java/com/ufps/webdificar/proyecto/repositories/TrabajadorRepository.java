@@ -8,6 +8,6 @@ import com.ufps.webdificar.proyecto.entities.Trabajador;
 @Repository
 public interface TrabajadorRepository extends JpaRepository<Trabajador, Integer> {
 
-	Trabajador findByCorreo(String correo);
+	Trabajador findByUsername(String username);
 
 }
