@@ -13,14 +13,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.ufps.webdificar.proyecto.entities.Role;
 import com.ufps.webdificar.proyecto.entities.Trabajador;
 import com.ufps.webdificar.proyecto.repositories.TrabajadorRepository;
 import com.ufps.webdificar.proyecto.service.interfaces.TrabajadorInterface;
 
-import jakarta.transaction.Transactional;
-
+@Service("jpaUserDetailsService")
 public class JpaUserDetailsService implements UserDetailsService, TrabajadorInterface{
 	
 	protected final Log logger = LogFactory.getLog(this.getClass());
@@ -78,6 +78,7 @@ public class JpaUserDetailsService implements UserDetailsService, TrabajadorInte
 	}
 
 	@Override
+	@org.springframework.transaction.annotation.Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Trabajador trabajador = trabajadorDao.findByUsername(username);
 		
