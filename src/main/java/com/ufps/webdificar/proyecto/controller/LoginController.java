@@ -20,7 +20,7 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login(@RequestParam( value = "error", required = false)String error , @RequestParam(value = "logout" , required = false)String logout , Model model, Principal principal, RedirectAttributes flash) {
-		
+		System.out.println("ENTRÓ EN METODO LOGIN");
 		if(principal != null) {
 			flash.addFlashAttribute("info", "Ya has iniciado sesion anteriormente");
 			return "redirect:/";
@@ -36,8 +36,8 @@ public class LoginController {
 			
 		}
 		
-		model.addAttribute("titulo","BoxerCrossGym");
+		model.addAttribute("titulo","WebDificar");
 		
-		return "views/login";
+		return "login";
 	}
 }

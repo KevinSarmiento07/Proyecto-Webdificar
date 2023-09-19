@@ -62,7 +62,7 @@ public class Trabajador implements Serializable{
 	@Column(length = 60)
 	private String password;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "trabajador_id")
 	private List<Role> roles;
 	
@@ -82,5 +82,7 @@ public class Trabajador implements Serializable{
 
 	@OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
 	private List<Documento> documentos = new ArrayList<>();
+	
+	
 
 }

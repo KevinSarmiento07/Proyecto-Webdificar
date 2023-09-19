@@ -31,7 +31,10 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		
+		System.out.println("ENTRO EN onAUTH");
 		Trabajador trabajador = userDetailsService.findByUsername(authentication.getName());
+		
+		System.out.println(trabajador);
 		SessionFlashMapManager flashMapManager = new SessionFlashMapManager();
 		
 		FlashMap flashMap = new FlashMap();

@@ -38,7 +38,7 @@ public class SecurityConfig {
 			}
 		}).formLogin(login -> login.loginPage("/login").successHandler(successHandler).permitAll());
 		
-		return null;
+		return http.build();
 	}
 	
 	@Autowired
