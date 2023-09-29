@@ -32,12 +32,13 @@ public class LoginController {
 		
 		if(error != null) {
 			System.out.println("entró en el if de ERROR");
+			System.out.println(error);
 			model.addAttribute("errorLogin", "Error al iniciar sesión, usuario o contraseña incorrecta");
 			
 		}
 		
 		model.addAttribute("titulo","WebDificar");
 		
-		return "login";
+		return "views/login";
 	}
 }

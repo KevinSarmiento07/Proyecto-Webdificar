@@ -40,6 +40,14 @@ public class Trabajador implements Serializable{
 	public Trabajador() {
 		this.roles = new ArrayList<Role>();
 	}
+	
+	public Trabajador(String nombre,String contrasena,String documento,String username) {
+		this.nombre = nombre;
+		this.password = contrasena;
+		this.documento = documento;
+		this.username = username;
+		this.roles = new ArrayList<Role>();
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,6 +95,11 @@ public class Trabajador implements Serializable{
 	public String toString() {
 		return "Trabajador [id=" + id + ", nombre=" + nombre + ", enabled=" + enabled + ", documento=" + documento
 				+ ", username=" + username + ", password=" + password  + "]";
+	}
+
+	public void addRole(Role role) {
+		// TODO Auto-generated method stub
+		this.roles.add(role);
 	}
 	
 	

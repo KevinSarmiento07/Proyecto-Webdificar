@@ -10,10 +10,13 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Table(name = "authorities", uniqueConstraints = {@UniqueConstraint(columnNames = {"trabajador_id", "authority"})})
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role implements Serializable{/**
 	 * 
 	 */
