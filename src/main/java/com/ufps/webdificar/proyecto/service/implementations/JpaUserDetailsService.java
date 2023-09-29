@@ -38,7 +38,31 @@ public class JpaUserDetailsService implements UserDetailsService, TrabajadorInte
 		return trabajadorDao.findByUsername(username);
 	}
 	
-	
+	@Override
+	public void save(Trabajador trabajador) {
+		// TODO Auto-generated method stub
+		if(trabajador.getId() == null) {
+			trabajador.setEnabled(true);
+			
+			trabajador.setPassword(passwordEncoder.encode(trabajador.getPassword()));
+			
+			Role role = new Role();
+			
+			role.setAuthority("ROLE_USER");
+			
+			trabajador.addRole(role);
+		}else {
+			
+			if(!trabajador.getPassword().isEmpty()) {
+				trabajador.setPassword(passwordEncoder.encode(trabajador.getPassword()));
+			}else {
+				
+				trabajador.setPassword(findByUsername(trabajador.getUsername()).getPassword());
+			}
+		}
+		
+		trabajadorDao.save(trabajador);
+	}
 	
 
 	@Override

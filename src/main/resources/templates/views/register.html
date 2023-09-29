@@ -54,7 +54,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Registro de cuenta</h5>
-            <form th:action="@{/login/registro}" method="post">
+            <form th:action="@{/register/registro}" method="post" th:object="${trabajador}">
               <div class="mb-3">
                 <label for="documento" class="form-label">Documento de identidad:</label>
                 <input type="text" class="form-control" id="documento" name="documento" placeholder="Ingrese su documento de identidad" required>
@@ -64,12 +64,12 @@
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre completo" required>
               </div>
               <div class="mb-3">
-                <label for="correo" class="form-label">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su Correo Electrónico" required>
+                <label for="username" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="username" name="username" placeholder="Ingrese su Correo Electrónico" th:field="*{username}" required>
               </div>
               <div class="mb-3">
-                <label for="contrasena" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" th:field="*{password}" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block" style="background-color: #F5DEB3; border-color: #F5DEB3; color: black;">Registrar Cuenta</button>
             </form>
@@ -78,35 +78,6 @@
       </div>
     </div>
   </div>
-  
-
-  <footer class="footer bg-dark text-light">
-    <div class="container">
-        <div>
-            <div class="footer">
-              <h6 class="text fw-bold">CONTACTO:</h6>
-              <ul class="list-unstyled">
-                  <li>Kevin Andres Sarmiento Sierra - 1152061</li>
-                  <li>Leonardo Trujillo Vega - 1152071</li>
-                  <li>Kevin Alexis Eslava Mantilla - 1152066</li>
-              </ul>
-            </div>
-            <divclass="footer" style="text-align: center; ">
-                <p style="padding-left: 550px; padding-top: 20px;">Programa de Ingeniería de Sistemas</p>
-                <p style="padding-left: 550px;">Acreditado de Alta Calidad</p>
-            </div>
-            
-            <div class="footer" style="text-align: right; padding-right: 150px;">                
-              <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank">
-                  <img id="imgSistemas" src="https://lh6.googleusercontent.com/-uYxUt6k-M_Y/TW8MSZUBOZI/AAAAAAAAADY/8d68ETgkZpc/s1600/Ing_Sistemas.jpg" alt="Ingeniería de Sistemas">
-              </a>
-              <a href="https://ww2.ufps.edu.co/" target="_blank">
-                  <img id="imgUfps" src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_ufps.png" alt="Ingeniería de Sistemas">
-              </a>                  
-          </div>
-        </div>                
-    </div>    
-</footer>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

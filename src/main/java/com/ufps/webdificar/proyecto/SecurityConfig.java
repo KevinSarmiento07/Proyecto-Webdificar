@@ -30,7 +30,7 @@ public class SecurityConfig {
 		System.out.println("Entró en filter chain");
 		http.authorizeHttpRequests((authz) -> {
 			try {
-				authz.requestMatchers("/css/**", "/js/**", "/images/**", "/adminlte/**", "/fontawesome/**", "/").permitAll()
+				authz.requestMatchers("/css/**", "/js/**", "/images/**", "/adminlte/**", "/fontawesome/**", "/", "/register/**").permitAll()
 				.requestMatchers("/**").hasAnyRole("USER", "ADMIN")
 				.anyRequest().authenticated();
 			}catch (Exception e) {

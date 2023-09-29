@@ -19,4 +19,6 @@ public interface TrabajadorInterface {
 	public void deleteById(Integer id);
 	
 	public Trabajador getByCorreo(String correo);
+	
+	public void save(Trabajador trabajador);
 }

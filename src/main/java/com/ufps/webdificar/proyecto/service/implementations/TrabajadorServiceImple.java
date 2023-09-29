@@ -42,8 +42,16 @@ public class TrabajadorServiceImple implements TrabajadorInterface {
 
 	@Override
 	public Trabajador getByCorreo(String correo) {
-		return trabajadorRepository.findByUsername(correo);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public void save(Trabajador trabajador) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 }
