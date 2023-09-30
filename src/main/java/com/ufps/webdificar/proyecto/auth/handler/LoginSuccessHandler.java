@@ -3,6 +3,7 @@ package com.ufps.webdificar.proyecto.auth.handler;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -50,7 +51,16 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		//Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
 		
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		boolean rolUser = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USER") && authorities.size() == 1;
+		boolean rolAdmin = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_ADMIN");
+		if(rolUser) {
+			response.sendRedirect("/user/home");
+		}
 		
+		if(rolAdmin) {
+			response.sendRedirect("/listar");
+		}
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 
