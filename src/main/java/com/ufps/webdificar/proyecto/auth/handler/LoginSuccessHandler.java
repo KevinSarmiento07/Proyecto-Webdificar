@@ -55,11 +55,11 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		boolean rolUser = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USER") && authorities.size() == 1;
 		boolean rolAdmin = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_ADMIN");
 		if(rolUser) {
-			response.sendRedirect("/user/home");
+			response.sendRedirect("/proyecto/listar");
 		}
 		
 		if(rolAdmin) {
-			response.sendRedirect("/listar");
+			response.sendRedirect("/proyecto/listar");
 		}
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
