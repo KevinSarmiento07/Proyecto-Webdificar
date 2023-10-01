@@ -26,6 +26,7 @@ import com.ufps.webdificar.proyecto.repositories.ProyectoRepository;
 import com.ufps.webdificar.proyecto.repositories.TareaRepository;
 import com.ufps.webdificar.proyecto.repositories.TrabajadorRepository;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -45,7 +46,10 @@ public class ProyectoController {
 	private TrabajadorRepository trabajadorRepository;
 	
 	@GetMapping("/listar")
-	public String listarProyectos(Model model) {
+	public String listarProyectos(Model model, HttpSession session) {
+		//Se obtiene el trabajador por la session y se agrega al modelo
+		Trabajador trabajador = (Trabajador) session.getAttribute("trabajador");
+		model.addAttribute("trabajador", trabajador);
 		List<Proyecto> proyectos = proyectoRepository.findAll();
 		model.addAttribute("proyectos", proyectos);
 		return "views/proyectos"; //Redireccionar a la vista del listado de proyectos
@@ -71,11 +75,11 @@ public class ProyectoController {
 	
 	
 	@GetMapping("/editar/{id}")
-	public String editarProyecto(@Valid Proyecto proyecto, Model model, BindingResult result) {
-		
+	public String editarProyecto(@Valid Proyecto proyecto, @RequestParam(name = "trabajadorId") Integer trabajadorId, Model model, BindingResult result) {						
 		Proyecto proyectoEditar = proyectoRepository.findById(proyecto.getId()).orElse(null);
 		List<Documento> documentos = documentoRepository.findAll();
 		List<Trabajador> trabajadores = trabajadorRepository.findAll();
+		
 		List<Tarea> tareas = new ArrayList<>();
 		
 		for(Tarea tarea : tareaRepository.findAll()) {
@@ -84,6 +88,11 @@ public class ProyectoController {
 			}
 		}
 		
+		Trabajador trabajadorRestringir = trabajadores.stream()
+	            .filter(trabajador -> trabajador.getId().equals(trabajadorId))
+	            .findFirst()
+	            .orElse(null);
+		model.addAttribute("trabajador", trabajadorRestringir);
 		model.addAttribute("documentos", documentos);
 		model.addAttribute("proyecto", proyectoEditar);
 		model.addAttribute("trabajadores", trabajadores);

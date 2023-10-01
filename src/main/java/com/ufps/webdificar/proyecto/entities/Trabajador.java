@@ -101,6 +101,11 @@ public class Trabajador implements Serializable{
 		// TODO Auto-generated method stub
 		this.roles.add(role);
 	}
+
+	public boolean hasRole(String rol) {
+		// TODO Auto-generated method stub
+		return this.roles.get(0).getAuthority().equals(rol);
+	}
 	
 	
 	
