@@ -20,22 +20,22 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login(@RequestParam( value = "error", required = false)String error , @RequestParam(value = "logout" , required = false)String logout , Model model, Principal principal, RedirectAttributes flash) {
-		System.out.println("ENTRÓ EN METODO LOGIN");
-		if(principal != null) {
-			flash.addFlashAttribute("info", "Ya has iniciado sesion anteriormente");
-			return "redirect:/";
-		}
-		
-		if(logout != null) {
-			model.addAttribute("success", "Has cerrado sesión con exito");
-		}
-		
-		if(error != null) {
-			System.out.println("entró en el if de ERROR");
-			System.out.println(error);
-			model.addAttribute("errorLogin", "Error al iniciar sesión, usuario o contraseña incorrecta");
-			
-		}
+//		System.out.println("ENTRÓ EN METODO LOGIN");
+//		if(principal != null) {
+//			flash.addFlashAttribute("info", "Ya has iniciado sesion anteriormente");
+//			return "redirect:/";
+//		}
+//		
+//		if(logout != null) {
+//			model.addAttribute("success", "Has cerrado sesión con exito");
+//		}
+//		
+//		if(error != null) {
+//			System.out.println("entró en el if de ERROR");
+//			System.out.println(error);
+//			model.addAttribute("errorLogin", "Error al iniciar sesión, usuario o contraseña incorrecta");
+//			
+//		}
 		
 		model.addAttribute("titulo","WebDificar");
 		

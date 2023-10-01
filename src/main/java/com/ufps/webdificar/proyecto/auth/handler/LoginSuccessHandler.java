@@ -19,6 +19,7 @@ import com.ufps.webdificar.proyecto.service.implementations.JpaUserDetailsServic
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Component
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
@@ -54,6 +55,12 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		boolean rolUser = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USER") && authorities.size() == 1;
 		boolean rolAdmin = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_ADMIN");
+		
+		// Se agrega el modelo de trabajador al asesion para que en el controlador de listar proyecto recuperarlo.
+		HttpSession session = request.getSession();
+		session.setAttribute("trabajador", trabajador);
+
+		
 		if(rolUser) {
 			response.sendRedirect("/proyecto/listar");
 		}
