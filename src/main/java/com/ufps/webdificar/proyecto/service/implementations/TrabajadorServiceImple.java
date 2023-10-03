@@ -47,7 +47,7 @@ public class TrabajadorServiceImple implements TrabajadorInterface {
 	}
 
 	@Override
-	public void save(Trabajador trabajador) {
+	public void save(Trabajador trabajador, String rolCombo) {
 		// TODO Auto-generated method stub
 		
 	}

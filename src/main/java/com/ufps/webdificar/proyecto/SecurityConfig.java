@@ -31,7 +31,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authz) -> {
 			try {
 				authz.requestMatchers("/css/**", "/js/**", "/images/**", "/adminlte/**", "/fontawesome/**", "/", "/register/**").permitAll()
-				.requestMatchers("/**").hasAnyRole("USER", "ADMIN")
+				.requestMatchers("/**").hasAnyRole("USER", "ADMIN", "USERST", "USERSCA")
 				.anyRequest().authenticated();
 			}catch (Exception e) {
 				e.printStackTrace();

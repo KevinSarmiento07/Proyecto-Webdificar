@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,9 +74,9 @@
   <br>
   <div class="container">
     <!-- Contenido del cuerpo -->
-    <div class="row" th:object="${trabajador}">
+    <div class="row">
         <div class="col-md">
-            <a type="button" th:if="${!trabajador.hasRole('ROLE_USER')}" class="btn" th:href="@{/proyecto/crear}" style="background-color: #fcce78; border-color: #000; color: black;">Registrar Nuevo Proyecto</a>
+            <a type="button" sec:authorize="hasRole('ROLE_ADMIN')" class="btn" th:href="@{/proyecto/crear}" style="background-color: #fcce78; border-color: #000; color: black;">Registrar Nuevo Proyecto</a>
         </div>
         
     </div>

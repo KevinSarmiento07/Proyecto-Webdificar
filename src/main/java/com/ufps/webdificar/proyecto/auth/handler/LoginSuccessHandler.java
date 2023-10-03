@@ -54,6 +54,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		boolean rolUser = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USER") && authorities.size() == 1;
+		boolean rolUserST = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USERST") && authorities.size() == 1;
+		boolean rolUserSCA = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_USERSCA") && authorities.size() == 1;		
 		boolean rolAdmin = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).contains("ROLE_ADMIN");
 		
 		// Se agrega el modelo de trabajador al asesion para que en el controlador de listar proyecto recuperarlo.
@@ -62,6 +64,14 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 
 		
 		if(rolUser) {
+			response.sendRedirect("/proyecto/listar");
+		}
+		
+		if(rolUserST) {
+			response.sendRedirect("/proyecto/listar");
+		}
+		
+		if(rolUserSCA) {
 			response.sendRedirect("/proyecto/listar");
 		}
 		

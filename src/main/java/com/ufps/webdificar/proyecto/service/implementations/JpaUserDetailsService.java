@@ -39,7 +39,7 @@ public class JpaUserDetailsService implements UserDetailsService, TrabajadorInte
 	}
 	
 	@Override
-	public void save(Trabajador trabajador) {
+	public void save(Trabajador trabajador, String rolCombo) {
 		// TODO Auto-generated method stub
 		if(trabajador.getId() == null) {
 			trabajador.setEnabled(true);
@@ -48,7 +48,13 @@ public class JpaUserDetailsService implements UserDetailsService, TrabajadorInte
 			
 			Role role = new Role();
 			
-			role.setAuthority("ROLE_USER");
+			if(rolCombo.equals("01")) {
+				role.setAuthority("ROLE_USER");
+			}else if(rolCombo.equals("02")) {
+				role.setAuthority("ROLE_USERST");
+			}else {
+				role.setAuthority("ROLE_USERSCA");
+			}
 			
 			trabajador.addRole(role);
 		}else {

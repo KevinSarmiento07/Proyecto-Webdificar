@@ -20,5 +20,5 @@ public interface TrabajadorInterface {
 	
 	public Trabajador getByCorreo(String correo);
 	
-	public void save(Trabajador trabajador);
+	public void save(Trabajador trabajador, String rolCombo);
 }
