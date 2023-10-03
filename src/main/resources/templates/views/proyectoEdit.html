@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Webdificar</title>
@@ -118,19 +118,20 @@
 						                   	</td>
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
-						                        <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
-						                        <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+						                        <a class="btn btn-primary" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+						                        <a class="btn btn-primary" sec:authorize="hasRole('ROLE_USERSCA')" th:href="@{/documento/editar/{id}(id=${documento.id})}">Mostrar</a>
+						                        <a class="btn btn-danger" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
 						                    </td>
 						                </tr>
 						            </tbody>
 						        </table>
-								<a class="btn btn-success" th:href="@{/documento/crear}">Registrar un Documento</a>         
+								<a class="btn btn-success" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/crear}">Registrar un Documento</a>         
 								<a class="btn btn-success" th:href="@{/documento}">Listar Documentos</a>                     	
                             	
                             	 
                             	
                             </div>
-                            <a class="btn" th:if="${!trabajador.hasRole('ROLE_USER')}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>                            
+                            <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>                            
                             <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
                             <button type="submit" id="aceptarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Aplicar Cambios</a>
                         </div>
@@ -139,13 +140,13 @@
             </div>
         </div>
         <br>
-        <div class="row">            
+        <div class="row" sec:authorize="!hasRole('ROLE_USERST')">            
             <div class="col-sm-6 col-md-4">
                 <br>
                 <div class="card" style="width: 65rem;">
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
-                        <a class="btn" th:if="${!trabajador.hasRole('ROLE_USER')}" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
+                        <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')"th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
                         <a class="btn" th:href="@{/tarea/listar/tareas}" id="listar" style="background-color: #fcce78; border-color: #000; color: black;">Listar tarea</a>          
                         <br>
                         <br>
@@ -169,9 +170,9 @@
                                         <td th:text="${tarea.fechaFin}"></td>
                                         <td th:text="${tarea.trabajadorAsignado.nombre}"></td>
                                         <td>
-                                            <a class="btn btn-primary" th:if="${!trabajador.hasRole('ROLE_USER')}" th:href="@{/tarea/editar/{id}(id=${tarea.id})}">Editar</a>
-                                            <a class="btn btn-primary" th:if="${trabajador.hasRole('ROLE_USER')}" th:href="@{/tarea/editar/{id}(id=${tarea.id})}">Mostrar</a>
-                                            <a class="btn btn-danger" th:if="${!trabajador.hasRole('ROLE_USER')}" th:href="@{/tarea/eliminar/{id}(id=${tarea.id})}">Eliminar</a>
+                                            <a class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')"th:href="@{/tarea/editar/{id}(id=${tarea.id})}">Editar</a>
+                                            <a class="btn btn-primary" sec:authorize="!hasRole('ROLE_ADMIN')" th:href="@{/tarea/editar/{id}(id=${tarea.id})}">Mostrar</a>
+                                            <a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/tarea/eliminar/{id}(id=${tarea.id})}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </tbody>

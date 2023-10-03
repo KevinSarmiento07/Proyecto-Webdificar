@@ -53,13 +53,14 @@ public class RegisterController {
 	String nombre, @RequestParam("password") 
 	String contrasena,@RequestParam("documento") 
 	String documento,  @RequestParam("username") 
-	String username) {
+	String username, @RequestParam(name="rolCombo") 
+	String rolCombo) {
 		if(trabajadorRepository.findByUsername(username) != null) {
 			return "/login/registro"; // aqui debe reddireccionar a una vista diciendo que el correo ya esta registrado
 		}
 		
 		Trabajador trabajador = new Trabajador(nombre, contrasena, documento, username);
-		jpaUserDetailsService.save(trabajador);
+		jpaUserDetailsService.save(trabajador, rolCombo);
 		return "views/login"; // retorna a la vista después de guardar el trabajor.
 	}
 

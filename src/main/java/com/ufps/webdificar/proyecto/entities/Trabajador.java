@@ -58,6 +58,7 @@ public class Trabajador implements Serializable{
 	
 	
 	private boolean enabled;
+	
 
 	@NotEmpty
 	private String documento;
