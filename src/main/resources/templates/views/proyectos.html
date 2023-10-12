@@ -1,55 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <title>Webdificar</title>
-  <style>
-    body {
-      padding-top: 70px;
-      padding-bottom: 100px;  
-      background-color: #F5DEB3;     
-    }
-
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      color: aliceblue;
-    }
-
-    .card{
-      background-color: #f9ebd1;
-      border-color: black;
-    }
-
-    .limit-words {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 4; /* Número máximo de líneas */
-      -webkit-box-orient: vertical;
-    }
-
-    img {   
-            width: 100px; /* Ancho deseado de la imagen */
-            height: 100px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-        
-        .imgUfps{
-            padding-top: 10px;
-            width: 270px; /* Ancho deseado de la imagen */
-            height: 350px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-
-  </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<head th:replace="~{layout/loginSuccess.html :: head}">    
 </head>
+<header th:replace="~{layout/loginSuccess.html :: header}"></header>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">

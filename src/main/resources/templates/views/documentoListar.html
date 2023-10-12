@@ -1,75 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Ingresar a la página principal</title>
- 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  
-    <style>
-        body {
-            padding-top: 70px;
-            padding-bottom: 100px;
-            background-color: #F5DEB3;
-        }
-
-        .carousel-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            color: aliceblue;
-        }
-
-
-        img {   
-            width: 100px; /* Ancho deseado de la imagen */
-            height: 100px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-        
-        .imgUfps{
-            padding-top: 10px;
-            width: 270px; /* Ancho deseado de la imagen */
-            height: 350px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-
-    </style>
-
-  
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/loginSuccess.html :: head}">    
 </head>
+<header th:replace="~{layout/loginSuccess.html :: header}"></header>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Webdificar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Inicio</a>
-                </li>               
-            </ul>
-        </div>
-        <div class="d-flex">
-            <a type="button" class="btn btn-dark" th:href="@{/login/registro}">Registrar</a>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
     <a onclick="goBack()" class="btn" style="background-color: #fcce78; border-color: #000; color: black;">volver a editar el proyecto.</a>
     <br>
@@ -97,13 +31,14 @@
                         </td>
                         <td th:text="${documento.fecha}"></td>
                         <td>
-                            <a class="btn btn-primary" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
-                            <a class="btn btn-danger" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+                            <a class="btn btn-primary" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'') or !hasRole(''ROLE_USERSCA'')')}" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
+                            <a class="btn btn-primary" th:if="${#authorization.expression('!hasRole(''ROLE_ADMIN'') and hasRole(''ROLE_USERSCA'') and !hasRole(''ROLE_USERST'')')}" th:href="@{/documento/editar/{id}(id=${documento.id})}">Mostrar</a>
+                            <a class="btn btn-danger" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'') or !hasRole(''ROLE_USERSCA'')')}" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-success" th:href="@{/documento/crear}">Registrar un Documento</a> 
+            <a class="btn btn-success" sec:authorize="hasRole('ROL_ADMIN')" th:href="@{/documento/crear}">Registrar un Documento</a> 
         </div>
     </div>
 </div>

@@ -1,68 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>Webdificar</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
-	<style>
-    body {
-        position: relative;
-        height: 70%;
-        padding-top: 70px;
-        padding-bottom: 100px;  
-        background-color: #F5DEB3;       
-    }
-
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      color: aliceblue;
-    }
-
-    .card-title{
-        padding: 10px;
-    }
-
-    img {   
-            width: 100px; /* Ancho deseado de la imagen */
-            height: 100px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-        
-        .imgUfps{
-            padding-top: 10px;
-            width: 270px; /* Ancho deseado de la imagen */
-            height: 350px; /* Altura automática proporcional a la anchura */
-            background-color: whitesmoke;
-        }
-    </style>
-
+<head th:replace="~{layout/loginSuccess.html :: head}">    
 </head>
+<header th:replace="~{layout/loginSuccess.html :: header}"></header>
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Webdificar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Inicio</a>
-                </li>               
-            </ul>
-        </div>
-        <div class="d-flex">
-            <a type="button" class="btn btn-dark" th:href="@{/login}">Cerrar Sesión</a>
-        </div>
-    </div>
-  </nav>
+
 
   <br>
     <div class="container">
@@ -93,12 +35,28 @@
                             <div class="form-group">
                                 <label for="descripcion">Descripción:</label>
                                 <textarea class="form-control" id="descripcion" name="descripcion" th:text="*{descripcion}" rows="3" readonly></textarea>
-                            </div>
-                            <div class="form-group">
-                            	<label for="documentos">Documentos:</label>
-                            	
-                            	
-                            	<table class="table">
+                            </div>                            
+                            <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>                            
+                            <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
+                            <button type="submit" id="aceptarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Aplicar Cambios</a>
+                        </div>
+                    </form>                   	
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">            
+            <div class="col-sm-6 col-md-4">
+                <br>
+                <div class="card" style="width: 65rem;">
+                    <div class="card-body">
+                        <h1 class="card-title">Documentos</h1>
+                        <a class="btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'') or hasRole(''ROLE_USER'') or hasRole(''ROLE_USERST'')')}" th:href="@{/documento/crear}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear documento</a>          
+                        <a class="btn" th:href="@{/documento}" id="listar" style="background-color: #fcce78; border-color: #000; color: black;">Listar documentos</a>          
+                        <br>
+                        <br>
+                        <div class="card" style="width: 60rem;">
+                            <table class="table">
 						            <thead class="thead-light">
 						                <tr>
 						                    <th>Nombre</th>
@@ -119,23 +77,14 @@
 						                    <td th:text="${documento.fecha}"></td>
 						                    <td>
 						                        <a class="btn btn-primary" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/editar/{id}(id=${documento.id})}">Editar</a>
-						                        <a class="btn btn-primary" sec:authorize="hasRole('ROLE_USERSCA')" th:href="@{/documento/editar/{id}(id=${documento.id})}">Mostrar</a>
-						                        <a class="btn btn-danger" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
+						                        <a class="btn btn-primary" th:if="${#authorization.expression('hasRole(''ROLE_USERSCA'') and !hasRole(''ROLE_ADMIN'') and !hasRole(''ROLE_USERST'')')}" th:href="@{/documento/editar/{id}(id=${documento.id})}">Mostrar</a>
+						                        <a class="btn btn-danger" th:if="${#authorization.expression('!hasRole(''ROLE_USERSCA'') and hasRole(''ROLE_USER'') or hasRole(''ROLE_ADMIN'') or hasRole(''ROLE_USERST'')')}" th:href="@{/documento/eliminar/{id}(id=${documento.id})}">Eliminar</a>
 						                    </td>
 						                </tr>
 						            </tbody>
 						        </table>
-								<a class="btn btn-success" sec:authorize="!hasRole('ROLE_USERSCA')" th:href="@{/documento/crear}">Registrar un Documento</a>         
-								<a class="btn btn-success" th:href="@{/documento}">Listar Documentos</a>                     	
-                            	
-                            	 
-                            	
-                            </div>
-                            <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')" id="editar" style="background-color: #fcce78; border-color: #000; color: black;" onclick="editProyecto();">Editar proyecto</a>                            
-                            <a th:href="@{'/proyecto/editar/' + *{id}}" id="cancelarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Cancelar Cambios</a>
-                            <button type="submit" id="aceptarEditar" class="btn" style="background-color: #fcce78; border-color: #000; color: black;" hidden="true">Aplicar Cambios</a>
-                        </div>
-                    </form>                   	
+                        </div>                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,7 +95,7 @@
                 <div class="card" style="width: 65rem;">
                     <div class="card-body">
                         <h1 class="card-title">Tareas</h1>
-                        <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')"th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
+                        <a class="btn" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/tarea/registrar}" id="editar" style="background-color: #fcce78; border-color: #000; color: black;">Crear tarea</a>          
                         <a class="btn" th:href="@{/tarea/listar/tareas}" id="listar" style="background-color: #fcce78; border-color: #000; color: black;">Listar tarea</a>          
                         <br>
                         <br>
