@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+	<title>Webdificar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+	<style>
+    body {
+        position: relative;
+        height: 70%;
+        padding-top: 70px;
+        padding-bottom: 100px;  
+        background-color: #F5DEB3;       
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      color: aliceblue;
+    }
+
+    .card-title{
+        padding: 10px;
+    }
+
+    img {   
+            width: 100px; /* Ancho deseado de la imagen */
+            height: 100px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+        
+        .imgUfps{
+            padding-top: 10px;
+            width: 270px; /* Ancho deseado de la imagen */
+            height: 350px; /* Altura automática proporcional a la anchura */
+            background-color: whitesmoke;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Webdificar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>               
+            </ul>
+        </div>
+        <div class="d-flex">
+        	<input class="bg-dark" th:value="*{trabajador.nombre}" style="max-width: 200px; color:white; border: 0px; background-color: #F5DEB3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" readonly>
+            <a type="button" class="btn btn-dark" th:href="@{/login}">Cerrar Sesión</a>
+        </div>
+    </div>
+  </nav>	
+	</header>
+	
+
+</body>
+</html>
