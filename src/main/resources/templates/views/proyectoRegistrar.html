@@ -34,12 +34,13 @@
               <form th:action="@{/proyecto/crear}" th:object="${proyecto}" method="post">
                   <div class="form-group">
                       <label for="nombre">Nombre:</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" th:value="*{nombre}" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" required>
+
                   </div>
                   <div class="form-group">
-                    <label for="encargado">Encargado:</label>
-                    <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}">
-                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.id}" th:text="${trabajador.nombre}"></option>
+                    <label for="trabajador">Encargado:</label>
+                    <select id="trabajador" name="trabajador" class="form-control" th:field="*{trabajador}" >
+                        <option th:each="trab : ${trabajadores}" th:value="${trab.id}" th:text="${trab.nombre}"></option>
                     </select>
                   </div>
                   <div class="form-group">

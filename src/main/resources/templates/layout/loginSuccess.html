@@ -63,7 +63,7 @@
             </ul>
         </div>
         <div class="d-flex">
-        	<input class="bg-dark" th:value="*{trabajador.nombre}" style="max-width: 200px; color:white; border: 0px; background-color: #F5DEB3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" readonly>
+        	<input class="bg-dark" th:text="*{trabajador.nombre}" style="max-width: 200px; color:white; border: 0px; background-color: #F5DEB3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" readonly>
             <a type="button" class="btn btn-dark" th:href="@{/login}">Cerrar Sesión</a>
         </div>
     </div>

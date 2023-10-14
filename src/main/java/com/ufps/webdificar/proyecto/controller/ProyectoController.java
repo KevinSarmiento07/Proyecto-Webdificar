@@ -5,17 +5,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import com.ufps.webdificar.proyecto.service.implementations.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.ufps.webdificar.proyecto.entities.Documento;
 import com.ufps.webdificar.proyecto.entities.Proyecto;
@@ -44,6 +41,16 @@ public class ProyectoController {
 
 	@Autowired
 	private TrabajadorRepository trabajadorRepository;
+
+	@Autowired
+	JpaUserDetailsService userDetailsService;
+
+	@ModelAttribute("trabajador")
+	public Trabajador enviarTrabajador(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Trabajador trabajador = userDetailsService.findByUsername(auth.getName());
+		return trabajador;
+	}
 	
 	@GetMapping("/listar")
 	public String listarProyectos(Model model, HttpSession session) {
